@@ -35,19 +35,25 @@ export function MainNav({
   const isMainLandingPage = pathname === "/";
   const role = pathname?.split("/")[1] as "admin" | "student" | "teacher";
 
-  console.log(role);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
-    <div className="flex w-full items-center justify-between gap-6 md:gap-10">
+    <div className="flex w-full items-center justify-between gap-6 md:gap-10 py-4">
+      {/* Logo */}
       <Link href="/" className="flex items-center justify-start space-x-2">
         <div className="bg-logo w-12 h-12 bg-no-repeat bg-cover rounded-full" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
+
+      {/* Desktop nav */}
       {!isMainLandingPage && (
-        <div className="flex-1 flex justify-between items-center">
+        <div className="hidden md:flex flex-1 justify-between items-center">
           {isAuthenticated
             ? renderLinks(authenticatedNav, role, router)
             : renderLinks(items, role, router)}
+
           {isAuthenticated ? (
             <div className="flex items-center gap-2">
               <p className="text-sm text-muted-foreground flex items-center gap-2">
@@ -65,18 +71,39 @@ export function MainNav({
           )}
         </div>
       )}
+
+      {/* Mobile menu toggle */}
+      <div className="md:hidden">
+        <Button variant="ghost" size="icon" onClick={toggleMobileMenu}>
+          <Icons.menu className="w-5 h-5" />
+        </Button>
+      </div>
+
+      {/* Mobile drawer */}
+      {mobileMenuOpen && (
+        <div className="absolute top-16 left-0 w-full bg-white dark:bg-black border-t border-border z-50 md:hidden p-4 space-y-4 shadow-lg rounded-lg">
+          {isAuthenticated
+            ? renderLinks(authenticatedNav, role, router)
+            : renderLinks(items, role, router)}
+
+          {isAuthenticated ? (
+            <div className="flex flex-col gap-2">
+              {renderLinks(authenticatedLastNav, role, router)}
+            </div>
+          ) : (
+            renderLinks(endItems, role, router)
+          )}
+        </div>
+      )}
     </div>
   );
 }
 
 const renderLinks = (navItems?: NavItem[], role?: string, router?: any) => {
   return (
-    <nav className="flex gap-6">
+    <nav className="flex flex-col md:flex-row gap-4 md:gap-6">
       {navItems
-        ?.filter((item) => {
-          // Exclude "Register" if role is not admin
-          return !(item.title === "Signup" && role !== "admin");
-        })
+        ?.filter((item) => !(item.title === "Signup" && role !== "admin"))
         .map(
           (item, index) =>
             item.href && (

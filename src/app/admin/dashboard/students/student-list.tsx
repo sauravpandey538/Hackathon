@@ -1,8 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select";
 import { Button } from "@/src/components/ui/button";
 import { Card, CardContent } from "@/src/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/src/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/src/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/src/components/ui/table";
+import React, { useState, useEffect } from "react";
 
 interface Student {
   id: number;
@@ -23,9 +36,9 @@ interface StudentListProps {
 
 // Faculty options
 const FACULTY_OPTIONS = [
-  { value: 'BIT', label: 'Bachelor of Information Technology' },
-  { value: 'BCS', label: 'Bachelor of Computer Science' },
-  { value: 'BBS', label: 'Bachelor of Business Studies' },
+  { value: "BIT", label: "Bachelor of Information Technology" },
+  { value: "BCS", label: "Bachelor of Computer Science" },
+  { value: "BBS", label: "Bachelor of Business Studies" },
 ];
 
 // Semester options
@@ -35,26 +48,26 @@ const SEMESTER_OPTIONS = Array.from({ length: 8 }, (_, i) => ({
 }));
 
 export default function StudentList({ students, onFilter }: StudentListProps) {
-  const [faculty, setFaculty] = useState<string>('all');
-  const [semester, setSemester] = useState<string>('all');
+  const [faculty, setFaculty] = useState<string>("all");
+  const [semester, setSemester] = useState<string>("all");
 
   const handleFilter = () => {
     onFilter(
-      faculty === 'all' ? null : faculty,
-      semester === 'all' ? null : parseInt(semester)
+      faculty === "all" ? null : faculty,
+      semester === "all" ? null : parseInt(semester)
     );
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex gap-4 items-end">
+    <div className="space-y-4 ">
+      <div className="flex gap-4 items-end flex-wrap">
         <div className="w-[200px]">
           <label className="block text-sm font-medium mb-1">Faculty</label>
           <Select value={faculty} onValueChange={setFaculty}>
             <SelectTrigger>
               <SelectValue placeholder="All Faculties" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="flex flex-wrap gap-2">
               <SelectItem value="all">All Faculties</SelectItem>
               {FACULTY_OPTIONS.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
@@ -82,9 +95,7 @@ export default function StudentList({ students, onFilter }: StudentListProps) {
           </Select>
         </div>
 
-        <Button onClick={handleFilter}>
-          Filter
-        </Button>
+        <Button onClick={handleFilter}>Filter</Button>
       </div>
 
       <Card>
@@ -111,18 +122,23 @@ export default function StudentList({ students, onFilter }: StudentListProps) {
               ) : (
                 students.map((student) => (
                   <TableRow key={student.id}>
-                    <TableCell className="font-medium">{student.name}</TableCell>
+                    <TableCell className="font-medium">
+                      {student.name}
+                    </TableCell>
                     <TableCell>{student.email}</TableCell>
                     <TableCell>
-                      {FACULTY_OPTIONS.find(f => f.value === student.faculty)?.label || student.faculty}
+                      {FACULTY_OPTIONS.find((f) => f.value === student.faculty)
+                        ?.label || student.faculty}
                     </TableCell>
                     <TableCell>Semester {student.semester}</TableCell>
-                    <TableCell>{student.phone_number || '-'}</TableCell>
+                    <TableCell>{student.phone_number || "-"}</TableCell>
                     <TableCell>
                       {new Date(student.joined_at).toLocaleDateString()}
                     </TableCell>
                     <TableCell>
-                      {student.graduate_at ? new Date(student.graduate_at).toLocaleDateString() : '-'}
+                      {student.graduate_at
+                        ? new Date(student.graduate_at).toLocaleDateString()
+                        : "-"}
                     </TableCell>
                   </TableRow>
                 ))
@@ -133,4 +149,4 @@ export default function StudentList({ students, onFilter }: StudentListProps) {
       </Card>
     </div>
   );
-} 
+}

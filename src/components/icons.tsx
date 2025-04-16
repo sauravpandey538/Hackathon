@@ -9,6 +9,7 @@ import {
   LucideIcon,
   Eye,
   EyeOff,
+  Menu,
 } from "lucide-react";
 import { CgProfile } from "react-icons/cg";
 
@@ -22,6 +23,7 @@ export const Icons = {
   facebook: Facebook,
   gitHub: Github,
   eye: Eye,
+  menu: Menu,
   eyeOff: EyeOff,
   profile: CgProfile,
   logo: (props: LucideProps) => (
