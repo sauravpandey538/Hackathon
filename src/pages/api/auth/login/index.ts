@@ -17,6 +17,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
+    if(user.role !== 'admin') {
+      return res.status(400).json({ message: "Access denied" });
+    }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {

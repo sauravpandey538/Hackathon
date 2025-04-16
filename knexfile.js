@@ -13,7 +13,7 @@ const knexConfig = {
       port: 5432, 
       user: "postgres", 
       password: "itsmine", // Change to your PostgreSQL password
-      database: "code_sync_demo", // Change to your database name
+      database: "SchoolGrid", // Change to your database name
     },
     migrations: {
       tableName: "knex_migrations",

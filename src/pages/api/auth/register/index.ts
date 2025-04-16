@@ -3,17 +3,16 @@ import { NextApiResponse } from "next";
 import { NextApiRequest } from "next";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { serialize } from "cookie"; // <-- ✅ Import cookie serializer
+import { serialize } from "cookie"; 
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-if(req.method !== 'POST') {
-  return res.status(405).json({ status: false, error: 'Method not allowed' });
-}
-
   try {
-      const { name, email, password } = req.body;
+      const { name, email, password, role,secret_key } = req.body;
+      if(secret_key !== process.env.ADMIN_SECRET_KEY) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
   
       const user = await pg('users').where({ email }).first();
   
@@ -21,7 +20,7 @@ if(req.method !== 'POST') {
           return res.status(400).json({ message: 'User already exists' });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      const [newUser] = await pg('users').insert({ name, email, password: hashedPassword }).returning('*');
+      const [newUser] = await pg('users').insert({ name, email, password: hashedPassword, role }).returning('*');
 
 
     const token = jwt.sign(

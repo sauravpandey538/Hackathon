@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   // experimental: {
   //   appDir: true,
   // },
-  eslint: {
-    ignoreDuringBuilds: true
-  }
+  // eslint: {
+  //   ignoreDuringBuilds: true
+  // }
 }
 
 export default nextConfig
