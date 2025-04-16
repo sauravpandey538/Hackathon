@@ -9,7 +9,7 @@ export default function TeacherPage() {
     <main className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl w-full text-center space-y-6">
         <div className="flex justify-center mb-4">
-          <div className="bg-logo w-64 h-64 bg-no-repeat bg-cover rounded-full" />
+          <div className="bg-teacher w-64 h-64 bg-no-repeat bg-cover rounded-full" />
         </div>
         <h1 className="text-3xl md:text-4xl font-bold text-foreground">
           Welcome, Teacher

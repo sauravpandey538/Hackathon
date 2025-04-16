@@ -23,6 +23,8 @@ const publicRoutes = [
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const pathname = url.pathname;
+
+  //return NextResponse.next();
   // return NextResponse.next(); // if i remove this, image are not loading
   // Allow public routes without authentication
   if (

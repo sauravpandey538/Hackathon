@@ -212,10 +212,24 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleFilter = async (faculty: string | null) => {
+  const handleTeacherFilter = async (faculty: string | null) => {
     const response = await fetch(`/api/teachers?faculty=${faculty}`);
     const data = await response.json();
+    console.log(data);
     setTeachers(data);
+  };
+
+  const handleRoutineFilter = async (
+    faculty?: string | null,
+    semester?: string | null,
+    section?: string | null
+  ) => {
+    const response = await fetch(
+      `/api/routines?faculty=${faculty}&semester=${semester}&section=${section}`
+    );
+    const data = await response.json();
+    console.log(data);
+    setRoutines(data);
   };
 
   return (
@@ -252,7 +266,7 @@ export default function AdminDashboard() {
                 <TeacherList
                   teachers={teachers}
                   onRemove={removeTeacher}
-                  onFilter={handleFilter}
+                  onFilter={handleTeacherFilter}
                 />
               )}
             </CardContent>
@@ -263,7 +277,11 @@ export default function AdminDashboard() {
           <TeacherForm onAdd={addTeacher} />
         </TabsContent>
         <TabsContent value="routine">
-          <GetRoutine routines={routines} onRemoveRoutine={removeRoutine} />
+          <GetRoutine
+            routines={routines}
+            onRemoveRoutine={removeRoutine}
+            onFilter={handleRoutineFilter}
+          />
         </TabsContent>
 
         <TabsContent value="add-routine">

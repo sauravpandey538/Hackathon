@@ -6,8 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/src/components/ui/card";
-import { Input } from "@/src/components/ui/input";
-import { Label } from "@/src/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -16,12 +14,6 @@ import {
   SelectValue,
 } from "@/src/components/ui/select";
 import { useState } from "react";
-
-interface Teacher {
-  id: number;
-  name: string;
-  subject: string;
-}
 
 interface RoutineItem {
   id: number;
@@ -36,31 +28,56 @@ interface RoutineItem {
 interface WeeklyRoutineProps {
   routines: RoutineItem[];
   onRemoveRoutine: (id: number) => void;
+  onFilter: (
+    faculty: string | null,
+    semester?: string | null,
+    section?: string | null
+  ) => void;
 }
 
-export function GetRoutine({ routines, onRemoveRoutine }: WeeklyRoutineProps) {
-  const [faculty, setFaculty] = useState<string | "all">("all");
-  const [semister, setSemister] = useState<number>(1);
+export function GetRoutine({
+  routines,
+  onRemoveRoutine,
+  onFilter,
+}: WeeklyRoutineProps) {
+  const [faculty, setFaculty] = useState<"BIT" | "BBS" | "BCA">("BIT");
+  const [semester, setSemester] = useState<number>(1);
   const [section, setSection] = useState<"A" | "B" | "C">("A");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
+
+  const handleFilter = () => {
+    onFilter(faculty, semester.toString(), section);
+  };
 
   return (
-    <>
-      <Card>
-        <CardHeader>
-          <CardTitle>Weekly Routine</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex gap-4 items-end">
+    <Card>
+      <CardHeader>
+        <CardTitle>Weekly Routine</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button
+          variant="outline"
+          onClick={() => setIsFilterOpen((prev) => !prev)}
+          className="mb-4"
+        >
+          {isFilterOpen ? "Hide Filters" : "Show Filters"}
+        </Button>
+
+        {isFilterOpen && (
+          <div className="flex gap-4 flex-wrap items-end mb-6">
+            {/* Faculty */}
             <div className="w-[200px]">
               <label className="block text-sm font-medium mb-1">Faculty</label>
-              <Select value={faculty || "all"} onValueChange={setFaculty}>
+              <Select
+                value={faculty}
+                onValueChange={(value) =>
+                  setFaculty(value as "BIT" | "BBS" | "BCA")
+                }
+              >
                 <SelectTrigger>
-                  <SelectValue placeholder="All Faculties" />
+                  <SelectValue placeholder="Faculty" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Faculties</SelectItem>
-
                   <SelectItem value="BIT">
                     Bachelor of Information Technology
                   </SelectItem>
@@ -73,36 +90,36 @@ export function GetRoutine({ routines, onRemoveRoutine }: WeeklyRoutineProps) {
                 </SelectContent>
               </Select>
             </div>
+
+            {/* Semester */}
             <div className="w-[200px]">
-              <label className="block text-sm font-medium mb-1">Semister</label>
+              <label className="block text-sm font-medium mb-1">Semester</label>
               <Select
-                value={semister.toString()}
-                onValueChange={(value) => setSemister(Number(value))}
+                value={semester.toString()}
+                onValueChange={(value) => setSemester(Number(value))}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="All Faculties" />
+                  <SelectValue placeholder="Semester" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">1</SelectItem>
-                  <SelectItem value="2">2</SelectItem>
-                  <SelectItem value="3">3</SelectItem>
-                  <SelectItem value="4">4</SelectItem>
-                  <SelectItem value="5">5</SelectItem>
-                  <SelectItem value="6">6</SelectItem>
-                  <SelectItem value="7">7</SelectItem>
-                  <SelectItem value="8">8</SelectItem>
+                  {[...Array(8)].map((_, i) => (
+                    <SelectItem key={i} value={(i + 1).toString()}>
+                      {i + 1}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
 
+            {/* Section */}
             <div className="w-[200px]">
-              <label className="block text-sm font-medium mb-1">Semister</label>
+              <label className="block text-sm font-medium mb-1">Section</label>
               <Select
                 value={section}
                 onValueChange={(value) => setSection(value as "A" | "B" | "C")}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="All Faculties" />
+                  <SelectValue placeholder="Section" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="A">A</SelectItem>
@@ -111,25 +128,17 @@ export function GetRoutine({ routines, onRemoveRoutine }: WeeklyRoutineProps) {
                 </SelectContent>
               </Select>
             </div>
-            <Button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? "Close" : "Filter"}
-            </Button>
-          </div>
 
-          {isOpen && faculty !== "all" ? (
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold mb-4">Current Routines</h3>
-              <WeeklyRoutineCalendar />
-            </div>
-          ) : (
-            <div className="mt-8">
-              <p className="text-muted-foreground">
-                Please select a faculty before filtering
-              </p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </>
+            <Button onClick={handleFilter}>Apply Filter</Button>
+          </div>
+        )}
+
+        {/* Calendar always visible */}
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold mb-4">Current Routines</h3>
+          <WeeklyRoutineCalendar routines={routines} />
+        </div>
+      </CardContent>
+    </Card>
   );
 }

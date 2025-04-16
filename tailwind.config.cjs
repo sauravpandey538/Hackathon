@@ -95,6 +95,9 @@ module.exports = {
       },
       backgroundImage: {
         logo: "url('/logo.jpeg')",
+        admin: "url('/admin.png')",
+        student: "url('/student.png')",
+        teacher: "url('/teacher.png')",
       },
     },
   },

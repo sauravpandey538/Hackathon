@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     try {
-      const teacher_routines = await db("teacher_routines")
+      let teacher_routines = db("teacher_routines")
         .select(
           "teacher_routines.*",
           "teachers.subject",
@@ -17,8 +17,26 @@ export default async function handler(
         .join("users", "teachers.user_id", "users.id")
         .orderBy("teacher_routines.day")
         .orderBy("teacher_routines.time");
-
-      return res.status(200).json(teacher_routines);
+      if (req.query.faculty) {
+        teacher_routines = teacher_routines.where(
+          "teachers.faculty",
+          req.query.faculty
+        );
+      }
+      if (req.query.semester) {
+        teacher_routines = teacher_routines.where(
+          "teacher_routines.semister",
+          req.query.semester
+        );
+      }
+      if (req.query.section) {
+        teacher_routines = teacher_routines.where(
+          "teacher_routines.section",
+          req.query.section
+        );
+      }
+      const query = await teacher_routines;
+      return res.status(200).json(query);
     } catch (error) {
       console.error("Error fetching teacher_routines:", error);
       return res

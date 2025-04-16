@@ -1099,6 +1099,9 @@ video {
 .pointer-events-auto {
   pointer-events: auto;
 }
+.visible {
+  visibility: visible;
+}
 .static {
   position: static;
 }
@@ -1596,6 +1599,12 @@ video {
 }
 .bg-logo {
   background-image: url('/logo.jpeg');
+}
+.bg-admin {
+  background-image: url('/admin.png');
+}
+.bg-teacher {
+  background-image: url('/teacher.png');
 }
 .bg-cover {
   background-size: cover;
