@@ -84,7 +84,6 @@ const LoginPage = () => {
       if (response.success) {
         // Refresh the authentication state
         await refreshAuth();
-        // Redirect to the intended destination
         router.push(redirectUrl);
       } else {
         console.log(response.error)
