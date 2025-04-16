@@ -1,7 +1,4 @@
 {
-  "/admin/dashboard/teachers/page": "app/admin/dashboard/teachers/page.js",
-  "/admin/dashboard/students/page": "app/admin/dashboard/students/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/teacher/page": "app/teacher/page.js",
-  "/student/page": "app/student/page.js"
+  "/not-found": "app/not-found.js",
+  "/admin/dashboard/teachers/page": "app/admin/dashboard/teachers/page.js"
 }

@@ -104,6 +104,8 @@ const renderLinks = (navItems?: NavItem[], role?: string, router?: any) => {
     <nav className="flex flex-col md:flex-row gap-4 md:gap-6">
       {navItems
         ?.filter((item) => !(item.title === "Signup" && role !== "admin"))
+        ?.filter((item) => !(item.title === "Students" && role !== "admin"))
+        ?.filter((item) => !(item.title === "Teachers" && role !== "admin"))
         .map(
           (item, index) =>
             item.href && (

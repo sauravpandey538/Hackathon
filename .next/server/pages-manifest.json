@@ -2,5 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/students": "pages/api/students.js"
+  "/api/teachers": "pages/api/teachers.js",
+  "/api/user/me": "pages/api/user/me.js",
+  "/api/routines": "pages/api/routines.js",
+  "/api/subjects": "pages/api/subjects.js"
 }

@@ -31,7 +31,7 @@ export default async function handler(
 
   if (req.method === "POST") {
     try {
-      const { name, subject, email, password, faculty } = req.body;
+      const { name, subject, email, password, faculty, phone } = req.body;
 
       if (!name || !subject || !email || !password) {
         return res.status(400).json({
@@ -55,6 +55,7 @@ export default async function handler(
           .insert({
             user_id: user.id,
             faculty,
+            phone,
             subject,
           })
           .returning("id");

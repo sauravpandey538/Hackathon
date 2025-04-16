@@ -1,12 +1,9 @@
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "SchoolGrid",
-  description:
-    "lorem epsum",
-  mainNav: [
-   
-  ],
+  description: "lorem epsum",
+  mainNav: [],
   //last nave must be /[role]/auth/login
   lastNav: [
     {
@@ -24,6 +21,7 @@ export const siteConfig = {
       title: "Dashboard",
       href: "/dashboard",
     },
+    //admin only
     {
       title: "Teachers",
       href: "/dashboard/teachers",
@@ -32,14 +30,23 @@ export const siteConfig = {
       title: "Students",
       href: "/dashboard/students",
     },
+    //student only
+    {
+      title: "Modules",
+      href: "/dashboard/modules",
+    },
+    {
+      title: "Routines",
+      href: "/dashboard/routines",
+    },
   ],
   authenticatedLastNav: [
     {
       title: "Logout",
       href: "/",
-    }
-    ],
-  
+    },
+  ],
+
   links: {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/sauravpandey538",
@@ -47,4 +54,4 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/saurav-pandey-b3648530a",
     facebook: "https://www.facebook.com/saurav.pandey.3998263",
   },
-}
+};
