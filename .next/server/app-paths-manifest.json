@@ -4,9 +4,9 @@
   "/admin/auth/signup/page": "app/admin/auth/signup/page.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
   "/admin/page": "app/admin/page.js",
-  "/teacher/dashboard/page": "app/teacher/dashboard/page.js",
   "/page": "app/page.js",
   "/student/page": "app/student/page.js",
   "/teacher/auth/login/page": "app/teacher/auth/login/page.js",
+  "/teacher/dashboard/page": "app/teacher/dashboard/page.js",
   "/teacher/page": "app/teacher/page.js"
 }
