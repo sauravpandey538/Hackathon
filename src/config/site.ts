@@ -1,22 +1,22 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Code_Sync",
+  name: "SchoolGrid",
   description:
-    "Code_Sync is a platform for developers to share their code and collaborate with others.",
+    "lorem epsum",
   mainNav: [
    
   ],
-  lastNav: [
-    {
-      title: "Login",
-      href: "/auth/login",
-    },
-    {
-      title: "Signup",
-      href: "/auth/signup",
-    },
-  ],
+  // lastNav: [
+  //   {
+  //     title: "Login",
+  //     href: "/auth/login",
+  //   },
+  //   {
+  //     title: "Signup",
+  //     href: "/auth/signup",
+  //   },
+  // ],
 
   authenticatedNav: [
     {

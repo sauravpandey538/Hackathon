@@ -43,7 +43,7 @@ const LoginPage = () => {
   const { refreshAuth } = useAuth();
   
   // Get the redirect URL from the query parameters
-  const redirectUrl = searchParams?.get('redirect') || '/dashboard';
+  const redirectUrl = searchParams?.get('redirect') || '/admin/dashboard';
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({

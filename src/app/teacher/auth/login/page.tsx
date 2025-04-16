@@ -43,7 +43,7 @@ const LoginPage = () => {
   const { refreshAuth } = useAuth();
   
   // Get the redirect URL from the query parameters
-  const redirectUrl = searchParams?.get('redirect') || '/dashboard';
+  const redirectUrl = searchParams?.get('redirect') || '/teacher/dashboard';
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
@@ -94,7 +94,7 @@ const LoginPage = () => {
 
   return (
     <div className="container bg-background flex flex-col justify-center items-center w-full">
-      <Label className="text-2xl font-bold">Login</Label>
+      <Label className="text-2xl font-bold"> Teacher Login</Label>
       <div className="flex flex-col gap-4 max-w-96 w-full">
         {fields.map((field) => (
           <div className="grid w-full max-w-sm items-center gap-1.5" key={field.id}>
