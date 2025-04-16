@@ -1,0 +1,96 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "pages/api/subjects";
+exports.ids = ["pages/api/subjects"];
+exports.modules = {
+
+/***/ "dotenv":
+/*!*************************!*\
+  !*** external "dotenv" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = require("dotenv");
+
+/***/ }),
+
+/***/ "knex":
+/*!***********************!*\
+  !*** external "knex" ***!
+  \***********************/
+/***/ ((module) => {
+
+module.exports = require("knex");
+
+/***/ }),
+
+/***/ "next/dist/compiled/next-server/pages-api.runtime.dev.js":
+/*!**************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/pages-api.runtime.dev.js" ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/compiled/next-server/pages-api.runtime.dev.js");
+
+/***/ }),
+
+/***/ "(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fsubjects&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fapi%2Fsubjects%2Findex.ts&middlewareConfigBase64=e30%3D!":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fsubjects&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fapi%2Fsubjects%2Findex.ts&middlewareConfigBase64=e30%3D! ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   config: () => (/* binding */ config),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   routeModule: () => (/* binding */ routeModule)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/future/route-modules/pages-api/module.compiled */ \"(api)/./node_modules/next/dist/server/future/route-modules/pages-api/module.compiled.js\");\n/* harmony import */ var next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/future/route-kind */ \"(api)/./node_modules/next/dist/server/future/route-kind.js\");\n/* harmony import */ var next_dist_build_templates_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/build/templates/helpers */ \"(api)/./node_modules/next/dist/build/templates/helpers.js\");\n/* harmony import */ var _src_pages_api_subjects_index_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/pages/api/subjects/index.ts */ \"(api)/./src/pages/api/subjects/index.ts\");\n\n\n\n// Import the userland code.\n\n// Re-export the handler (should be the default export).\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_templates_helpers__WEBPACK_IMPORTED_MODULE_2__.hoist)(_src_pages_api_subjects_index_ts__WEBPACK_IMPORTED_MODULE_3__, \"default\"));\n// Re-export config.\nconst config = (0,next_dist_build_templates_helpers__WEBPACK_IMPORTED_MODULE_2__.hoist)(_src_pages_api_subjects_index_ts__WEBPACK_IMPORTED_MODULE_3__, \"config\");\n// Create and export the route module that will be consumed.\nconst routeModule = new next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0__.PagesAPIRouteModule({\n    definition: {\n        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.PAGES_API,\n        page: \"/api/subjects\",\n        pathname: \"/api/subjects\",\n        // The following aren't used in production.\n        bundlePath: \"\",\n        filename: \"\"\n    },\n    userland: _src_pages_api_subjects_index_ts__WEBPACK_IMPORTED_MODULE_3__\n});\n\n//# sourceMappingURL=pages-api.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LXJvdXRlLWxvYWRlci9pbmRleC5qcz9raW5kPVBBR0VTX0FQSSZwYWdlPSUyRmFwaSUyRnN1YmplY3RzJnByZWZlcnJlZFJlZ2lvbj0mYWJzb2x1dGVQYWdlUGF0aD0uJTJGc3JjJTJGcGFnZXMlMkZhcGklMkZzdWJqZWN0cyUyRmluZGV4LnRzJm1pZGRsZXdhcmVDb25maWdCYXNlNjQ9ZTMwJTNEISIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUFzRztBQUN2QztBQUNMO0FBQzFEO0FBQzhEO0FBQzlEO0FBQ0EsaUVBQWUsd0VBQUssQ0FBQyw2REFBUSxZQUFZLEVBQUM7QUFDMUM7QUFDTyxlQUFlLHdFQUFLLENBQUMsNkRBQVE7QUFDcEM7QUFDTyx3QkFBd0IsZ0hBQW1CO0FBQ2xEO0FBQ0EsY0FBYyx5RUFBUztBQUN2QjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsS0FBSztBQUNMLFlBQVk7QUFDWixDQUFDOztBQUVEIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbmV4dC10ZW1wbGF0ZS8/NTFkZSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBQYWdlc0FQSVJvdXRlTW9kdWxlIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvZnV0dXJlL3JvdXRlLW1vZHVsZXMvcGFnZXMtYXBpL21vZHVsZS5jb21waWxlZFwiO1xuaW1wb3J0IHsgUm91dGVLaW5kIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvZnV0dXJlL3JvdXRlLWtpbmRcIjtcbmltcG9ydCB7IGhvaXN0IH0gZnJvbSBcIm5leHQvZGlzdC9idWlsZC90ZW1wbGF0ZXMvaGVscGVyc1wiO1xuLy8gSW1wb3J0IHRoZSB1c2VybGFuZCBjb2RlLlxuaW1wb3J0ICogYXMgdXNlcmxhbmQgZnJvbSBcIi4vc3JjL3BhZ2VzL2FwaS9zdWJqZWN0cy9pbmRleC50c1wiO1xuLy8gUmUtZXhwb3J0IHRoZSBoYW5kbGVyIChzaG91bGQgYmUgdGhlIGRlZmF1bHQgZXhwb3J0KS5cbmV4cG9ydCBkZWZhdWx0IGhvaXN0KHVzZXJsYW5kLCBcImRlZmF1bHRcIik7XG4vLyBSZS1leHBvcnQgY29uZmlnLlxuZXhwb3J0IGNvbnN0IGNvbmZpZyA9IGhvaXN0KHVzZXJsYW5kLCBcImNvbmZpZ1wiKTtcbi8vIENyZWF0ZSBhbmQgZXhwb3J0IHRoZSByb3V0ZSBtb2R1bGUgdGhhdCB3aWxsIGJlIGNvbnN1bWVkLlxuZXhwb3J0IGNvbnN0IHJvdXRlTW9kdWxlID0gbmV3IFBhZ2VzQVBJUm91dGVNb2R1bGUoe1xuICAgIGRlZmluaXRpb246IHtcbiAgICAgICAga2luZDogUm91dGVLaW5kLlBBR0VTX0FQSSxcbiAgICAgICAgcGFnZTogXCIvYXBpL3N1YmplY3RzXCIsXG4gICAgICAgIHBhdGhuYW1lOiBcIi9hcGkvc3ViamVjdHNcIixcbiAgICAgICAgLy8gVGhlIGZvbGxvd2luZyBhcmVuJ3QgdXNlZCBpbiBwcm9kdWN0aW9uLlxuICAgICAgICBidW5kbGVQYXRoOiBcIlwiLFxuICAgICAgICBmaWxlbmFtZTogXCJcIlxuICAgIH0sXG4gICAgdXNlcmxhbmRcbn0pO1xuXG4vLyMgc291cmNlTWFwcGluZ1VSTD1wYWdlcy1hcGkuanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fsubjects&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fapi%2Fsubjects%2Findex.ts&middlewareConfigBase64=e30%3D!\n");
+
+/***/ }),
+
+/***/ "(api)/./knexfile.js":
+/*!*********************!*\
+  !*** ./knexfile.js ***!
+  \*********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("// import dotenv from \"dotenv\";\n// dotenv.config();\n\nconst dotenv = __webpack_require__(/*! dotenv */ \"dotenv\");\ndotenv.config();\nconst knexConfig = {\n    development: {\n        client: \"pg\",\n        connection: {\n            host: \"localhost\",\n            port: 5432,\n            user: \"postgres\",\n            password: \"itsmine\",\n            database: \"SchoolGrid\"\n        },\n        migrations: {\n            tableName: \"knex_migrations\",\n            directory: \"./migrations\"\n        },\n        seeds: {\n            directory: \"./seeds\"\n        },\n        pool: {\n            min: 2,\n            max: 10\n        }\n    },\n    production: {\n        client: \"pg\",\n        connection: process.env.POSTGRES_URL,\n        ssl: {\n            rejectUnauthorized: false\n        },\n        migrations: {\n            tableName: \"knex_migrations\",\n            directory: \"./migrations\"\n        },\n        seeds: {\n            directory: \"./seeds\"\n        },\n        pool: {\n            min: 2,\n            max: 10\n        }\n    }\n};\nmodule.exports = knexConfig; //bun init -y\n //bun ./lib/db.ts\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9rbmV4ZmlsZS5qcyIsIm1hcHBpbmdzIjoiQUFBQSwrQkFBK0I7QUFDL0IsbUJBQW1COztBQUVuQixNQUFNQSxTQUFTQyxtQkFBT0EsQ0FBQztBQUN2QkQsT0FBT0UsTUFBTTtBQUdiLE1BQU1DLGFBQWE7SUFDakJDLGFBQWE7UUFDWEMsUUFBUTtRQUNSQyxZQUFZO1lBQ1ZDLE1BQU07WUFDTkMsTUFBTTtZQUNOQyxNQUFNO1lBQ05DLFVBQVU7WUFDVkMsVUFBVTtRQUNaO1FBQ0FDLFlBQVk7WUFDVkMsV0FBVztZQUNYQyxXQUFXO1FBQ2I7UUFDQUMsT0FBTztZQUNMRCxXQUFXO1FBQ2I7UUFDQUUsTUFBTTtZQUNKQyxLQUFLO1lBQ0xDLEtBQUs7UUFDUDtJQUNGO0lBQ0FDLFlBQVk7UUFDVmQsUUFBUTtRQUNSQyxZQUFZYyxRQUFRQyxHQUFHLENBQUNDLFlBQVk7UUFDcENDLEtBQUs7WUFDSEMsb0JBQW9CO1FBRXRCO1FBQ0FaLFlBQVk7WUFDVkMsV0FBVztZQUNYQyxXQUFXO1FBQ2I7UUFDQUMsT0FBTztZQUNMRCxXQUFXO1FBQ2I7UUFDQUUsTUFBTTtZQUNKQyxLQUFLO1lBQ0xDLEtBQUs7UUFDUDtJQUNGO0FBQ0Y7QUFDQU8sT0FBT0MsT0FBTyxHQUFHdkIsWUFFakIsYUFBYTtDQUNiLGlCQUFpQiIsInNvdXJjZXMiOlsid2VicGFjazovL25leHQtdGVtcGxhdGUvLi9rbmV4ZmlsZS5qcz8yMzMxIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGltcG9ydCBkb3RlbnYgZnJvbSBcImRvdGVudlwiO1xuLy8gZG90ZW52LmNvbmZpZygpO1xuXG5jb25zdCBkb3RlbnYgPSByZXF1aXJlKCdkb3RlbnYnKTtcbmRvdGVudi5jb25maWcoKTtcblxuXG5jb25zdCBrbmV4Q29uZmlnID0ge1xuICBkZXZlbG9wbWVudDoge1xuICAgIGNsaWVudDogXCJwZ1wiLFxuICAgIGNvbm5lY3Rpb246IHtcbiAgICAgIGhvc3Q6IFwibG9jYWxob3N0XCIsXG4gICAgICBwb3J0OiA1NDMyLCBcbiAgICAgIHVzZXI6IFwicG9zdGdyZXNcIiwgXG4gICAgICBwYXNzd29yZDogXCJpdHNtaW5lXCIsIC8vIENoYW5nZSB0byB5b3VyIFBvc3RncmVTUUwgcGFzc3dvcmRcbiAgICAgIGRhdGFiYXNlOiBcIlNjaG9vbEdyaWRcIiwgLy8gQ2hhbmdlIHRvIHlvdXIgZGF0YWJhc2UgbmFtZVxuICAgIH0sXG4gICAgbWlncmF0aW9uczoge1xuICAgICAgdGFibGVOYW1lOiBcImtuZXhfbWlncmF0aW9uc1wiLFxuICAgICAgZGlyZWN0b3J5OiBcIi4vbWlncmF0aW9uc1wiLFxuICAgIH0sXG4gICAgc2VlZHM6IHtcbiAgICAgIGRpcmVjdG9yeTogXCIuL3NlZWRzXCIsXG4gICAgfSxcbiAgICBwb29sOiB7XG4gICAgICBtaW46IDIsXG4gICAgICBtYXg6IDEwLFxuICAgIH0sXG4gIH0sXG4gIHByb2R1Y3Rpb246IHtcbiAgICBjbGllbnQ6IFwicGdcIixcbiAgICBjb25uZWN0aW9uOiBwcm9jZXNzLmVudi5QT1NUR1JFU19VUkwsXG4gICAgc3NsOiB7XG4gICAgICByZWplY3RVbmF1dGhvcml6ZWQ6IGZhbHNlLFxuICAgICAgLy8gc3NsbW9kZTogXCJyZXF1aXJlXCIsXG4gICAgfSxcbiAgICBtaWdyYXRpb25zOiB7XG4gICAgICB0YWJsZU5hbWU6IFwia25leF9taWdyYXRpb25zXCIsXG4gICAgICBkaXJlY3Rvcnk6IFwiLi9taWdyYXRpb25zXCIsXG4gICAgfSxcbiAgICBzZWVkczoge1xuICAgICAgZGlyZWN0b3J5OiBcIi4vc2VlZHNcIixcbiAgICB9LFxuICAgIHBvb2w6IHtcbiAgICAgIG1pbjogMixcbiAgICAgIG1heDogMTAsXG4gICAgfSxcbiAgfSxcbn07XG5tb2R1bGUuZXhwb3J0cyA9IGtuZXhDb25maWc7XG5cbi8vYnVuIGluaXQgLXlcbi8vYnVuIC4vbGliL2RiLnRzXG4iXSwibmFtZXMiOlsiZG90ZW52IiwicmVxdWlyZSIsImNvbmZpZyIsImtuZXhDb25maWciLCJkZXZlbG9wbWVudCIsImNsaWVudCIsImNvbm5lY3Rpb24iLCJob3N0IiwicG9ydCIsInVzZXIiLCJwYXNzd29yZCIsImRhdGFiYXNlIiwibWlncmF0aW9ucyIsInRhYmxlTmFtZSIsImRpcmVjdG9yeSIsInNlZWRzIiwicG9vbCIsIm1pbiIsIm1heCIsInByb2R1Y3Rpb24iLCJwcm9jZXNzIiwiZW52IiwiUE9TVEdSRVNfVVJMIiwic3NsIiwicmVqZWN0VW5hdXRob3JpemVkIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./knexfile.js\n");
+
+/***/ }),
+
+/***/ "(api)/./src/lib/db.ts":
+/*!***********************!*\
+  !*** ./src/lib/db.ts ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _knexfile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/knexfile */ \"(api)/./knexfile.js\");\n/* harmony import */ var _knexfile__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_knexfile__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var knex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! knex */ \"knex\");\n/* harmony import */ var knex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(knex__WEBPACK_IMPORTED_MODULE_1__);\n\n\n// Determine the correct environment configuration\nconst environmentConfig =  false ? 0 : (_knexfile__WEBPACK_IMPORTED_MODULE_0___default().development);\n// Initialize knex with the appropriate environment configuration\nconst pg = knex__WEBPACK_IMPORTED_MODULE_1___default()(environmentConfig);\n// Test the database connection\npg.raw(\"SELECT 1\").then(()=>console.log(\"Database connected\")).catch((err)=>console.error(\"Database connection failed\", err));\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (pg);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9zcmMvbGliL2RiLnRzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBQW9DO0FBQ1o7QUFHeEIsa0RBQWtEO0FBQ2xELE1BQU1FLG9CQUFvQkMsTUFBcUMsR0FDM0RILENBQXFCLEdBQ3JCQSw4REFBc0I7QUFFMUIsaUVBQWlFO0FBQ2pFLE1BQU1NLEtBQUtMLDJDQUFJQSxDQUFDQztBQUNoQiwrQkFBK0I7QUFDL0JJLEdBQUdDLEdBQUcsQ0FBQyxZQUNKQyxJQUFJLENBQUMsSUFBTUMsUUFBUUMsR0FBRyxDQUFDLHVCQUN2QkMsS0FBSyxDQUFDLENBQUNDLE1BQVFILFFBQVFJLEtBQUssQ0FBQyw4QkFBOEJEO0FBRTlELGlFQUFlTixFQUFFQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbmV4dC10ZW1wbGF0ZS8uL3NyYy9saWIvZGIudHM/OWU0ZiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQga25leENvbmZpZyBmcm9tIFwiQC9rbmV4ZmlsZVwiO1xuaW1wb3J0IGtuZXggZnJvbSBcImtuZXhcIjtcblxuXG4vLyBEZXRlcm1pbmUgdGhlIGNvcnJlY3QgZW52aXJvbm1lbnQgY29uZmlndXJhdGlvblxuY29uc3QgZW52aXJvbm1lbnRDb25maWcgPSBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gXCJwcm9kdWN0aW9uXCIgXG4gID8ga25leENvbmZpZy5wcm9kdWN0aW9uIFxuICA6IGtuZXhDb25maWcuZGV2ZWxvcG1lbnQ7XG5cbi8vIEluaXRpYWxpemUga25leCB3aXRoIHRoZSBhcHByb3ByaWF0ZSBlbnZpcm9ubWVudCBjb25maWd1cmF0aW9uXG5jb25zdCBwZyA9IGtuZXgoZW52aXJvbm1lbnRDb25maWcpO1xuLy8gVGVzdCB0aGUgZGF0YWJhc2UgY29ubmVjdGlvblxucGcucmF3KFwiU0VMRUNUIDFcIilcbiAgLnRoZW4oKCkgPT4gY29uc29sZS5sb2coXCJEYXRhYmFzZSBjb25uZWN0ZWRcIikpXG4gIC5jYXRjaCgoZXJyKSA9PiBjb25zb2xlLmVycm9yKFwiRGF0YWJhc2UgY29ubmVjdGlvbiBmYWlsZWRcIiwgZXJyKSk7XG5cbmV4cG9ydCBkZWZhdWx0IHBnO1xuIl0sIm5hbWVzIjpbImtuZXhDb25maWciLCJrbmV4IiwiZW52aXJvbm1lbnRDb25maWciLCJwcm9jZXNzIiwicHJvZHVjdGlvbiIsImRldmVsb3BtZW50IiwicGciLCJyYXciLCJ0aGVuIiwiY29uc29sZSIsImxvZyIsImNhdGNoIiwiZXJyIiwiZXJyb3IiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./src/lib/db.ts\n");
+
+/***/ }),
+
+/***/ "(api)/./src/pages/api/subjects/index.ts":
+/*!*****************************************!*\
+  !*** ./src/pages/api/subjects/index.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n/* harmony import */ var _src_lib_db__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/src/lib/db */ \"(api)/./src/lib/db.ts\");\n\n// your initialized knex instance\nasync function handler(req, res) {\n    if (req.method === \"GET\") {\n        try {\n            const { faculty } = req.query;\n            const subjects = await (0,_src_lib_db__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"modules\").where(\"faculty\", faculty);\n            return res.status(200).json(subjects);\n        } catch (error) {\n            console.error(\"Error fetching students:\", error);\n            return res.status(500).json({\n                error: \"Failed to fetch students\"\n            });\n        }\n    }\n    return res.status(405).json({\n        error: \"Method not allowed\"\n    });\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9zcmMvcGFnZXMvYXBpL3N1YmplY3RzL2luZGV4LnRzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQThCO0FBSTlCLGlDQUFpQztBQUVsQixlQUFlQyxRQUM1QkMsR0FBbUIsRUFDbkJDLEdBQW9CO0lBRXBCLElBQUlELElBQUlFLE1BQU0sS0FBSyxPQUFPO1FBQ3hCLElBQUk7WUFDRixNQUFNLEVBQUVDLE9BQU8sRUFBRSxHQUFHSCxJQUFJSSxLQUFLO1lBQzdCLE1BQU1DLFdBQVcsTUFBTVAsdURBQUVBLENBQUMsV0FBV1EsS0FBSyxDQUFDLFdBQVdIO1lBQ3RELE9BQU9GLElBQUlNLE1BQU0sQ0FBQyxLQUFLQyxJQUFJLENBQUNIO1FBQzlCLEVBQUUsT0FBT0ksT0FBTztZQUNkQyxRQUFRRCxLQUFLLENBQUMsNEJBQTRCQTtZQUMxQyxPQUFPUixJQUFJTSxNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDO2dCQUFFQyxPQUFPO1lBQTJCO1FBQ2xFO0lBQ0Y7SUFFQSxPQUFPUixJQUFJTSxNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDO1FBQUVDLE9BQU87SUFBcUI7QUFDNUQiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0LXRlbXBsYXRlLy4vc3JjL3BhZ2VzL2FwaS9zdWJqZWN0cy9pbmRleC50cz83ODNhIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBkYiBmcm9tIFwiQC9zcmMvbGliL2RiXCI7XG5pbXBvcnQgYmNyeXB0IGZyb20gXCJiY3J5cHRcIjtcbmltcG9ydCB7IE5leHRBcGlSZXF1ZXN0LCBOZXh0QXBpUmVzcG9uc2UgfSBmcm9tIFwibmV4dFwiO1xuXG4vLyB5b3VyIGluaXRpYWxpemVkIGtuZXggaW5zdGFuY2VcblxuZXhwb3J0IGRlZmF1bHQgYXN5bmMgZnVuY3Rpb24gaGFuZGxlcihcbiAgcmVxOiBOZXh0QXBpUmVxdWVzdCxcbiAgcmVzOiBOZXh0QXBpUmVzcG9uc2Vcbikge1xuICBpZiAocmVxLm1ldGhvZCA9PT0gXCJHRVRcIikge1xuICAgIHRyeSB7XG4gICAgICBjb25zdCB7IGZhY3VsdHkgfSA9IHJlcS5xdWVyeTtcbiAgICAgIGNvbnN0IHN1YmplY3RzID0gYXdhaXQgZGIoXCJtb2R1bGVzXCIpLndoZXJlKFwiZmFjdWx0eVwiLCBmYWN1bHR5KTtcbiAgICAgIHJldHVybiByZXMuc3RhdHVzKDIwMCkuanNvbihzdWJqZWN0cyk7XG4gICAgfSBjYXRjaCAoZXJyb3IpIHtcbiAgICAgIGNvbnNvbGUuZXJyb3IoXCJFcnJvciBmZXRjaGluZyBzdHVkZW50czpcIiwgZXJyb3IpO1xuICAgICAgcmV0dXJuIHJlcy5zdGF0dXMoNTAwKS5qc29uKHsgZXJyb3I6IFwiRmFpbGVkIHRvIGZldGNoIHN0dWRlbnRzXCIgfSk7XG4gICAgfVxuICB9XG5cbiAgcmV0dXJuIHJlcy5zdGF0dXMoNDA1KS5qc29uKHsgZXJyb3I6IFwiTWV0aG9kIG5vdCBhbGxvd2VkXCIgfSk7XG59XG4iXSwibmFtZXMiOlsiZGIiLCJoYW5kbGVyIiwicmVxIiwicmVzIiwibWV0aG9kIiwiZmFjdWx0eSIsInF1ZXJ5Iiwic3ViamVjdHMiLCJ3aGVyZSIsInN0YXR1cyIsImpzb24iLCJlcnJvciIsImNvbnNvbGUiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./src/pages/api/subjects/index.ts\n");
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../webpack-api-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next"], () => (__webpack_exec__("(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fsubjects&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fapi%2Fsubjects%2Findex.ts&middlewareConfigBase64=e30%3D!")));
+module.exports = __webpack_exports__;
+
+})();
