@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     try {
       const teachers = await db("teachers")
-        .select("teachers.*", "users.name")
+        .select("teachers.*", "users.*")
         .join("users", "teachers.user_id", "users.id");
 
       return res.status(200).json(teachers);

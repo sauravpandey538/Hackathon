@@ -24,10 +24,14 @@ export const siteConfig = {
       title: "Dashboard",
       href: "/dashboard",
     },
-    // {
-    //   title: "Room",
-    //   href: "/dashboard/room",
-    // },
+    {
+      title: "Teachers",
+      href: "/dashboard/teachers",
+    },
+    {
+      title: "Students",
+      href: "/dashboard/students",
+    },
   ],
   authenticatedLastNav: [
     {

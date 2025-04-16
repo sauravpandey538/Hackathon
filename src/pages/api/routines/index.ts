@@ -32,8 +32,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
       }
 
-      const teacher = await db("teachers").where("id", teacherId).first();
-      if (!teacher) {
+      const user = await db("users").where("id", teacherId).first();
+      if (!user) {
         return res.status(404).json({ error: "Teacher not found" });
       }
 
@@ -46,13 +46,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           error: "A routine already exists for this day, time, and section"
         });
       }
+   const teacher = await db("teachers").where("user_id", teacherId).first();
 
       const [routine] = await db("teacher_routines")
         .insert({
           day,
           time,
           section,
-          teacher_id: teacherId,
+          teacher_id: teacher.id,
         })
         .returning("id");
 
