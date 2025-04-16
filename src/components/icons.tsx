@@ -9,12 +9,10 @@ import {
   LucideIcon,
   Eye,
   EyeOff,
- 
-} from "lucide-react"
+} from "lucide-react";
 import { CgProfile } from "react-icons/cg";
 
-
-export type Icon = LucideIcon
+export type Icon = LucideIcon;
 
 export const Icons = {
   sun: SunMedium,
@@ -22,7 +20,7 @@ export const Icons = {
   twitter: Twitter,
   linkedin: Linkedin,
   facebook: Facebook,
-  gitHub : Github,
+  gitHub: Github,
   eye: Eye,
   eyeOff: EyeOff,
   profile: CgProfile,
@@ -34,5 +32,4 @@ export const Icons = {
       />
     </svg>
   ),
-
-}
+};
