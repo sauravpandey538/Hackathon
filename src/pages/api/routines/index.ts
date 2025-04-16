@@ -1,8 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import db from '@/src/lib/db';
+import db from "@/src/lib/db";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'GET') {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === "GET") {
     try {
       const teacher_routines = await db("teacher_routines")
         .select(
@@ -18,17 +21,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json(teacher_routines);
     } catch (error) {
       console.error("Error fetching teacher_routines:", error);
-      return res.status(500).json({ error: "Failed to fetch teacher_routines" });
+      return res
+        .status(500)
+        .json({ error: "Failed to fetch teacher_routines" });
     }
   }
 
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     try {
-      const { day, time, section, teacherId } = req.body;
+      const { day, time, section, teacherId, faculty, semister } = req.body;
 
-      if (!day || !time || !section || !teacherId) {
+      if (!day || !time || !section || !teacherId || !faculty || !semister) {
         return res.status(400).json({
-          error: "Day, time, section, and teacherId are required"
+          error: "Day, time, section, and teacherId are required",
         });
       }
 
@@ -43,10 +48,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       if (existingRoutine) {
         return res.status(409).json({
-          error: "A routine already exists for this day, time, and section"
+          error: "A routine already exists for this day, time, and section",
         });
       }
-   const teacher = await db("teachers").where("user_id", teacherId).first();
+      const teacher = await db("teachers").where("user_id", teacherId).first();
+      if (!teacher) {
+        return res.status(404).json({ error: "Teacher not found" });
+      }
 
       const [routine] = await db("teacher_routines")
         .insert({
@@ -54,6 +62,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           time,
           section,
           teacher_id: teacher.id,
+          faculty,
+          semister,
         })
         .returning("id");
 
@@ -76,5 +86,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // If method not allowed
-  return res.setHeader('Allow', ['GET', 'POST']).status(405).end(`Method ${req.method} Not Allowed`);
+  return res
+    .setHeader("Allow", ["GET", "POST"])
+    .status(405)
+    .end(`Method ${req.method} Not Allowed`);
 }

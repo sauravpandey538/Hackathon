@@ -3,6 +3,7 @@
 import { GetRoutine } from "./get-routine";
 import { TeacherForm } from "./teacher-form";
 import { TeacherList } from "./teacher-list";
+import WeeklyRoutineCalendar from "./weekly-calander";
 import { WeeklyRoutine } from "./weekly-routine";
 import {
   Card,
@@ -150,6 +151,8 @@ export default function AdminDashboard() {
     time: string;
     section: string;
     teacherId: number;
+    faculty: string;
+    semister: number;
   }) => {
     try {
       const response = await fetch("/api/routines", {
@@ -216,7 +219,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="container mx-auto py-6">
+    <div className="md:container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Teacher Management</h1>
 
       <Tabs defaultValue="list" className="space-y-4">
