@@ -1,1 +1,6 @@
-{"/_app":"pages/_app.js","/_error":"pages/_error.js","/api/auth/login":"pages/api/auth/login.js","/api/auth/logout":"pages/api/auth/logout.js","/api/auth/register":"pages/api/auth/register.js","/api/routines/[id]":"pages/api/routines/[id].js","/api/routines":"pages/api/routines.js","/api/teachers/[id]":"pages/api/teachers/[id].js","/api/teachers":"pages/api/teachers.js","/api/user/me":"pages/api/user/me.js","/api/user":"pages/api/user.js","/_document":"pages/_document.js","/404":"pages/404.html"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/api/user/me": "pages/api/user/me.js"
+}

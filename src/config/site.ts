@@ -7,16 +7,17 @@ export const siteConfig = {
   mainNav: [
    
   ],
-  // lastNav: [
-  //   {
-  //     title: "Login",
-  //     href: "/auth/login",
-  //   },
-  //   {
-  //     title: "Signup",
-  //     href: "/auth/signup",
-  //   },
-  // ],
+  //last nave must be /[role]/auth/login
+  lastNav: [
+    {
+      title: "Login",
+      href: "/auth/login",
+    },
+    {
+      title: "Signup",
+      href: "/auth/signup",
+    },
+  ],
 
   authenticatedNav: [
     {
