@@ -57,7 +57,7 @@ const NotificationList: React.FC = () => {
   }, [role]);
 
   return (
-    <div className="w-full max-w-2xl p-6 bg-background rounded-xl shadow min-h-[80vh]">
+    <div className="w-full max-w-2xl p-6 bg-background rounded-xl shadow min-h-[80vh] max-h-[90vh] overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Notifications</h2>
 
       <Tabs defaultValue={role} onValueChange={(val) => setRole(val as any)}>

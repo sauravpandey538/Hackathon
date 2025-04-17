@@ -10,6 +10,8 @@ import {
   Eye,
   EyeOff,
   Menu,
+  Edit,
+  Trash,
 } from "lucide-react";
 import { BiLogoGmail } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
@@ -24,6 +26,8 @@ export const Icons = {
   facebook: Facebook,
   gitHub: Github,
   eye: Eye,
+  edit: Edit,
+  delete: Trash,
   mail: BiLogoGmail,
   menu: Menu,
   eyeOff: EyeOff,

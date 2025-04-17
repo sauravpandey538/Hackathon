@@ -2,6 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/routines/get-my-routine": "pages/api/routines/get-my-routine.js",
-  "/api/modules": "pages/api/modules.js"
+  "/api/teachers": "pages/api/teachers.js",
+  "/api/routines": "pages/api/routines.js",
+  "/api/admin/teachers": "pages/api/admin/teachers.js",
+  "/api/subjects": "pages/api/subjects.js",
+  "/api/user/me": "pages/api/user/me.js"
 }

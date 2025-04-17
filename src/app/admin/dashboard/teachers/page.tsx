@@ -268,11 +268,7 @@ export default function AdminDashboard() {
                   <span className="ml-2">Loading teachers...</span>
                 </div>
               ) : (
-                <TeacherList
-                  teachers={teachers}
-                  onRemove={removeTeacher}
-                  onFilter={handleTeacherFilter}
-                />
+                <TeacherList />
               )}
             </CardContent>
           </Card>

@@ -78,10 +78,10 @@ export default function SearchableSelect({
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent className="w-full p-0  border-zinc-700">
+        <PopoverContent className="w-full p-0 border-zinc-700 z-[100]">
           <Command>
-            <CommandInput placeholder="Search..." className="bg-background  " />
-            <CommandList>
+            <CommandInput placeholder="Search..." className="bg-background" />
+            <CommandList className="max-h-[200px] overflow-y-auto touch-manipulation overscroll-contain">
               {items.map((item) => (
                 <CommandItem
                   key={item.id}

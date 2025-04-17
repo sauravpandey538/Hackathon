@@ -6,7 +6,7 @@ import React from "react";
 
 const AdminDashboard: React.FC = () => {
   return (
-    <div className=" md:container w-full flex space-x-8">
+    <div className="md:container w-full flex flex-col md:flex-row space-x-8">
       {/* Right side: List of all notifications */}
       <div className="flex-1">
         <NotificationList />
