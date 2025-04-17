@@ -156,7 +156,7 @@ export const TeacherList = () => {
 
       if (response.success) {
         toast({
-          title: "Success",
+          title: "Success 🎉",
           description: "Teacher updated successfully.",
         });
         setIsEditDialogOpen(false);
@@ -193,7 +193,7 @@ export const TeacherList = () => {
 
       if (response.success) {
         toast({
-          title: "Success",
+          title: "Success 🎉",
           description: "Teacher deleted successfully.",
         });
         setIsDeleteDialogOpen(false);

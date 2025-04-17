@@ -22,14 +22,17 @@ import React, { useState, useEffect } from "react";
 
 interface Student {
   id: number;
+  user_id: number;
   name: string;
   email: string;
   address: string | null;
   phone_number: string | null;
   faculty: string;
   semester: number;
+  section: string;
   joined_at: string;
   graduate_at: string | null;
+  role: string;
 }
 
 export default function StudentsPage() {
@@ -45,10 +48,11 @@ export default function StudentsPage() {
       setIsLoading(true);
       setError(null);
 
-      let url = "/api/students";
+      let url = "/api/admin/students";
       const params = new URLSearchParams();
-      if (faculty) params.append("faculty", faculty);
-      if (semester) params.append("semester", semester.toString());
+      if (faculty && faculty !== "all") params.append("faculty", faculty);
+      if (semester && semester !== 0)
+        params.append("semester", semester.toString());
       if (params.toString()) url += `?${params.toString()}`;
 
       const response = await fetchApi(url, {
@@ -58,19 +62,18 @@ export default function StudentsPage() {
           "Content-Type": "application/json",
         },
       });
-      if (!response.success) {
-        throw new Error(response.error || "Failed to fetch students");
-      }
 
-      const data = response.data as Student[];
-      setStudents(data);
+      if (response && Array.isArray(response)) {
+        setStudents(response);
+      } else if (response && response.data && Array.isArray(response.data)) {
+        setStudents(response.data);
+      } else {
+        setStudents([]);
+        console.error("Invalid response format:", response);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch students");
-      //   toast({
-      //     title: "Error",
-      //     description: err instanceof Error ? err.message : 'Failed to fetch students',
-      //     variant: "destructive",
-      //   });
+      setStudents([]);
     } finally {
       setIsLoading(false);
     }

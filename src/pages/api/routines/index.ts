@@ -7,6 +7,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     try {
+      console.log(req.query.faculty, req.query.semester, req.query.section);
       let teacher_routines = db("teacher_routines")
         .select(
           "teacher_routines.*",

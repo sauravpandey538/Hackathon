@@ -49,7 +49,7 @@ export function WeeklyRoutine({ teachers, onAddRoutine }: WeeklyRoutineProps) {
   const [time, setTime] = useState("");
   const [section, setSection] = useState<"A" | "B" | "C">("A");
   const [teacherId, setTeacherId] = useState<number | "">("");
-  const [faculty, setFaculty] = useState<"BIT" | "BBS" | "BCA">("BIT");
+  const [faculty, setFaculty] = useState<"BIT" | "BBS" | "BCS">("BIT");
   const [semister, setSemister] = useState<number>(1);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -85,7 +85,7 @@ export function WeeklyRoutine({ teachers, onAddRoutine }: WeeklyRoutineProps) {
               <Select
                 value={faculty || "BIT"}
                 onValueChange={(val) =>
-                  setFaculty(val as "BIT" | "BBS" | "BCA")
+                  setFaculty(val as "BIT" | "BBS" | "BCS")
                 }
               >
                 <SelectTrigger>
@@ -98,8 +98,8 @@ export function WeeklyRoutine({ teachers, onAddRoutine }: WeeklyRoutineProps) {
                   <SelectItem value="BBS">
                     Bachelor of Business Studies
                   </SelectItem>
-                  <SelectItem value="BCA">
-                    Bachelor of Computer Application
+                  <SelectItem value="BCS">
+                    Bachelor of Computer Science
                   </SelectItem>
                 </SelectContent>
               </Select>
