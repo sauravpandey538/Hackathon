@@ -39,6 +39,10 @@ export const siteConfig = {
       title: "Routines",
       href: "/dashboard/routines",
     },
+    {
+      title: "Profile",
+      href: "/dashboard/profile",
+    },
   ],
   authenticatedLastNav: [
     {

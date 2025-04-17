@@ -1,7 +1,3 @@
 {
-  "/student/dashboard/modules/page": "app/student/dashboard/modules/page.js",
-  "/student/auth/login/page": "app/student/auth/login/page.js",
-  "/student/dashboard/routines/page": "app/student/dashboard/routines/page.js",
-  "/student/dashboard/page": "app/student/dashboard/page.js",
-  "/student/page": "app/student/page.js"
+  "/student/dashboard/profile/page": "app/student/dashboard/profile/page.js"
 }
