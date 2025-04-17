@@ -6,41 +6,26 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/admin/dashboard/page": [
+    "/teacher/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/admin/dashboard/page.js"
+      "static/chunks/app/teacher/dashboard/page.js"
     ],
-    "/admin/page": [
+    "/teacher/dashboard/modules/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/admin/page.js"
+      "static/chunks/app/teacher/dashboard/modules/page.js"
     ],
-    "/page": [
+    "/teacher/dashboard/routines/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/css/app/teacher/dashboard/routines/page.css",
+      "static/chunks/app/teacher/dashboard/routines/page.js"
     ],
-    "/teacher/page": [
+    "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/teacher/page.js"
-    ],
-    "/admin/auth/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/auth/login/page.js"
-    ],
-    "/admin/auth/signup/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/auth/signup/page.js"
-    ],
-    "/admin/dashboard/teachers/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/admin/dashboard/teachers/page.css",
-      "static/chunks/app/admin/dashboard/teachers/page.js"
+      "static/chunks/app/not-found.js"
     ]
   }
 }

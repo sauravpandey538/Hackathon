@@ -106,6 +106,8 @@ const renderLinks = (navItems?: NavItem[], role?: string, router?: any) => {
         ?.filter((item) => !(item.title === "Signup" && role !== "admin"))
         ?.filter((item) => !(item.title === "Students" && role !== "admin"))
         ?.filter((item) => !(item.title === "Teachers" && role !== "admin"))
+        ?.filter((item) => !(item.title === "Routines" && role !== "student"))
+        ?.filter((item) => !(item.title === "Modules" && role !== "student"))
         .map(
           (item, index) =>
             item.href && (

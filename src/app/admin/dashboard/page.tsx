@@ -1,7 +1,22 @@
+// pages/admin/dashboard.tsx
+
+import NotificationList from "./notification-list";
+import NotificationSender from "./notification-sender";
 import React from "react";
 
-function page() {
-  return <div>This is admin dashboard. Currently under development.</div>;
-}
+const AdminDashboard: React.FC = () => {
+  return (
+    <div className=" md:container w-full flex space-x-8">
+      {/* Right side: List of all notifications */}
+      <div className="flex-1">
+        <NotificationList />
+      </div>
+      {/* Left side: Notification sender form */}
+      <div className="flex-1">
+        <NotificationSender />
+      </div>
+    </div>
+  );
+};
 
-export default page;
+export default AdminDashboard;

@@ -53,6 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <SiteHeader />
           <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
         </AuthProvider>
+        <script src="https://js.pusher.com/8.3.0/pusher.min.js"></script>
       </body>
     </html>
   );
