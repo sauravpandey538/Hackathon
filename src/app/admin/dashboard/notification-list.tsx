@@ -16,6 +16,7 @@ interface Notification {
   message: string;
   role: string;
   sent_at: string;
+  sendor: string;
 }
 
 const NotificationList: React.FC = () => {
@@ -88,11 +89,12 @@ const NotificationItems = ({
       ) : (
         notifications?.map((n) => (
           <div key={n.id} className="border p-4 rounded-lg bg-background">
-            <h3 className="font-semibold">{n.title}</h3>
+            <h1 className="font-medium mb-2">@{n.sendor || "Admin"}</h1>
+            <h3 className="font-medium">{n.title}</h3>
             <p className="text-sm text-gray-600">{n.message}</p>
-            <span className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 w-full text-right ">
               {new Date(n.sent_at).toLocaleString()}
-            </span>
+            </p>
           </div>
         ))
       )}

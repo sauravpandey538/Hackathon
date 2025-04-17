@@ -2,8 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/api/admin/notifications/send-notofication": "pages/api/admin/notifications/send-notofication.js",
+  "/api/auth/logout": "pages/api/auth/logout.js",
+  "/api/user/me": "pages/api/user/me.js",
   "/api/auth/check-existence": "pages/api/auth/check-existence.js",
   "/api/auth/login": "pages/api/auth/login.js",
-  "/api/user/me": "pages/api/user/me.js",
-  "/api/admin/notifications": "pages/api/admin/notifications.js"
+  "/api/student/notifications": "pages/api/student/notifications.js"
 }

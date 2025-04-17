@@ -13,6 +13,7 @@ interface Notification {
   message: string;
   role: string;
   sent_at: string;
+  sendor: string;
 }
 
 export default function TeacherNotificationPanel() {
@@ -73,11 +74,12 @@ export default function TeacherNotificationPanel() {
             {notifications.map((n) => (
               <Card key={n.id} className="bg-background">
                 <CardContent className="p-4 space-y-1">
+                  <h1 className="font-medium mb-2">@{n.sendor || "Admin"}</h1>
                   <h3 className="font-medium">{n.title}</h3>
                   <p className="text-sm text-muted-foreground">{n.message}</p>
-                  <span className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 w-full text-right ">
                     {new Date(n.sent_at).toLocaleString()}
-                  </span>
+                  </p>
                 </CardContent>
               </Card>
             ))}

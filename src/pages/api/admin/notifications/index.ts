@@ -32,10 +32,14 @@ export default async function handler(
     const role = req.query.role as string | undefined;
     const limit = parseInt(req.query.limit as string) || 20;
 
-    const query = pg("notifications").orderBy("sent_at", "desc").limit(limit);
+    const query = pg("notifications")
+      .leftJoin("users", "notifications.sender_id", "users.id")
+      .select("notifications.*", "users.name as sender_name")
+      .orderBy("sent_at", "desc")
+      .limit(limit);
 
     if (role) {
-      query.where("role", role);
+      query.where("notifications.role", role);
     }
 
     const notifications = await query;

@@ -1,6 +1,8 @@
 // pages/api/sendNotification.ts
 
 import pg from "@/src/lib/db";
+import { getUser } from "@/src/utility/getUser";
+import { getUserIdFromToken } from "@/src/utility/getUserId";
 import { NextApiRequest, NextApiResponse } from "next";
 // adjust path to your knex instance
 import Pusher from "pusher";
@@ -23,22 +25,26 @@ export default async function handler(
       .json({ status: false, message: "Method not allowed" });
   }
 
+  const user = getUser(req.cookies.token);
   const { title, message, role } = req.body;
   console.log(title, message, role);
 
   if (!title || !message || !role) {
     return res.status(400).json({ status: false, message: "Missing fields" });
   }
+  const sendor = await pg("users").where("id", user?.id).first();
 
   try {
     const newNotification = await pg("notifications").insert({
       title,
       message,
       role,
+      sender_id: user?.id,
     });
 
     // Broadcast via Pusher
     await pusher.trigger("notifications", "new-notification", {
+      sendor: sendor.name || "Admin",
       title,
       message,
       role,
