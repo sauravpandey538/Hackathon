@@ -13,7 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/src/components/ui/select";
-import { useState } from "react";
+import { toast } from "@/src/hooks/use-toast";
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
 
 interface RoutineItem {
   id: number;
@@ -44,11 +46,96 @@ export function GetRoutine({
   const [semester, setSemester] = useState<number>(1);
   const [section, setSection] = useState<"A" | "B" | "C">("A");
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
+  const [localRoutines, setLocalRoutines] = useState<RoutineItem[]>(routines);
 
-  const handleFilter = () => {
+  useEffect(() => {
     onFilter(faculty, semester.toString(), section);
+  }, [faculty, semester, section]);
+
+  useEffect(() => {
+    setLocalRoutines(routines);
+  }, [routines]);
+
+  const handleEventDrop = async (args: any) => {
+    const { start } = args;
+    console.log(start);
+    const { id } = args.event;
+    const weekDay = format(start, "EEEE");
+    const time = format(start, "HH:mm");
+
+    try {
+      const response = await fetch(`/api/routines/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ day: weekDay, time }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        toast({
+          title: "Success 🎉",
+          description: "Routine updated successfully",
+        });
+        setLocalRoutines((prev) =>
+          prev.map((routine) =>
+            routine.id === id ? { ...routine, day: weekDay, time } : routine
+          )
+        );
+      } else {
+        toast({
+          title: "Failed ❌",
+          description: "Failed to update routine",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error ❌",
+        description: "Failed to update routine",
+      });
+    }
   };
 
+  const handleDeleteEvent = async (args: any) => {
+    try {
+      const response = await fetch(`/api/routines/${args}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        toast({
+          title: "Success 🎉",
+          description: "Routine deleted successfully",
+        });
+        setLocalRoutines((prev) =>
+          prev.filter((routine) => routine.id !== args)
+        );
+      } else {
+        toast({
+          title: "Failed ❌",
+          description: "Failed to delete routine",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error ❌",
+        description: "Failed to delete routine",
+      });
+    }
+  };
+
+  const handleEventResize = (args: any) => {
+    toast({
+      title: "Not implemented",
+      description: "This feature is not implemented yet",
+    });
+  };
   return (
     <Card>
       <CardHeader>
@@ -129,14 +216,24 @@ export function GetRoutine({
               </Select>
             </div>
 
-            <Button onClick={handleFilter}>Apply Filter</Button>
+            {/* <Button onClick={handleFilter}>Apply Filter</Button> */}
           </div>
         )}
-
         {/* Calendar always visible */}
         <div className="mt-4">
           <h3 className="text-lg font-semibold mb-4">Current Routines</h3>
-          <WeeklyRoutineCalendar routines={routines} />
+          <WeeklyRoutineCalendar
+            routines={localRoutines}
+            onEventDrop={(args) => {
+              handleEventDrop(args);
+            }}
+            onEventResize={(args) => {
+              handleEventResize(args);
+            }}
+            onDeleteEvent={(args) => {
+              handleDeleteEvent(args);
+            }}
+          />
         </div>
       </CardContent>
     </Card>

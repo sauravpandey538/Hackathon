@@ -1,17 +1,16 @@
 // import dotenv from "dotenv";
 // dotenv.config();
 
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
-
 
 const knexConfig = {
   development: {
     client: "pg",
     connection: {
       host: "localhost",
-      port: 5432, 
-      user: "postgres", 
+      port: 5432,
+      user: "postgres",
       password: "itsmine", // Change to your PostgreSQL password
       database: "SchoolGrid", // Change to your database name
     },
@@ -24,7 +23,7 @@ const knexConfig = {
     },
     pool: {
       min: 2,
-      max: 10,
+      max: 30,
     },
   },
   production: {

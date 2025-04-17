@@ -1,5 +1,4 @@
 import localizer from "@/src/components/calander";
-import { useEffect, useState } from "react";
 import { Calendar } from "react-big-calendar";
 
 interface RoutineItem {
@@ -9,6 +8,8 @@ interface RoutineItem {
   teacher_id: number;
   teacher_name?: string;
   subject?: string;
+  semister: string;
+  faculty: string;
 }
 
 const getDayDate = (day: string, time: string): Date => {
@@ -38,18 +39,24 @@ const getDayDate = (day: string, time: string): Date => {
   return targetDate;
 };
 
+interface CalendarEvent {
+  title: string;
+  start: Date;
+  end: Date;
+}
+
 export default function WeeklyRoutineCalendar({
   routines,
 }: {
   routines: RoutineItem[];
 }) {
   // Convert your API data to calendar event format
-  const events = routines?.map((item) => {
+  const events: CalendarEvent[] = routines.map((item) => {
     const start = getDayDate(item.day, item.time);
     const end = new Date(start.getTime() + 2.5 * 60 * 60000); // Assuming each class is 2.5 hr
 
     return {
-      title: `${item.subject} - ${item.teacher_name}`,
+      title: `${item.subject || "Unknown"} - ${item.teacher_name || "Unknown"}`,
       start,
       end,
     };

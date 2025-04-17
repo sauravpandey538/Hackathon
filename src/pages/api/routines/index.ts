@@ -12,7 +12,7 @@ export default async function handler(
           "teacher_routines.*",
           "teachers.subject",
           "users.name as teacher_name",
-          "user.email"
+          "users.email"
         )
         .join("teachers", "teacher_routines.teacher_id", "teachers.id")
         .join("users", "teachers.user_id", "users.id")
@@ -106,7 +106,7 @@ export default async function handler(
 
   // If method not allowed
   return res
-    .setHeader("Allow", ["GET", "POST"])
+    .setHeader("Allow", ["GET", "POST", "PUT"])
     .status(405)
     .end(`Method ${req.method} Not Allowed`);
 }

@@ -290,7 +290,7 @@ export default function AdminDashboard() {
         </TabsContent>
 
         <TabsContent value="add-routine">
-          <WeeklyRoutine onAddRoutine={addRoutine} teachers={teachers} />
+          <WeeklyRoutine onAddRoutine={addRoutine} teachers={teachers || []} />
         </TabsContent>
       </Tabs>
     </div>

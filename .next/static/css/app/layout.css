@@ -1181,6 +1181,9 @@ video {
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
+.-mt-6 {
+  margin-top: -1.5rem;
+}
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1299,6 +1302,9 @@ video {
 }
 .h-\[400px\] {
   height: 400px;
+}
+.h-\[600px\] {
+  height: 600px;
 }
 .h-\[80vh\] {
   height: 80vh;
