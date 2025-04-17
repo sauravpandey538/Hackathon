@@ -4,6 +4,7 @@ import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
 import { useAuth } from "@/src/contexts/auth-context";
+import { useToast } from "@/src/hooks/use-toast";
 import { fetchApi } from "@/src/lib/api";
 import { loginSchema } from "@/src/zod/auth";
 import Link from "next/link";
@@ -42,6 +43,7 @@ const LoginPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { refreshAuth } = useAuth();
+  const { toast } = useToast();
 
   // Get the redirect URL from the query parameters
   const redirectUrl = "/admin/dashboard";
@@ -84,9 +86,20 @@ const LoginPage = () => {
       });
       if (response.success) {
         // Refresh the authentication state
+        toast({
+          title: "Login Successful 🎉",
+          description: "Redirecting to your dashboard...",
+        });
+
         await refreshAuth();
         router.push(redirectUrl);
       } else {
+        toast({
+          variant: "destructive",
+          title: "Login Failed ❌",
+          description:
+            response.error || "Invalid credentials. Please try again.",
+        });
         console.log(response.error);
       }
     }

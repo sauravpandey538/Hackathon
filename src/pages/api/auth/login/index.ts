@@ -22,6 +22,12 @@ export default async function handler(
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
+    // const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    // if (!isPasswordCorrect) {
+    //   return res.status(400).json({ message: "Password didn't found" });
+    // }
+
     console.log({
       id: user.id,
       email: user.email,

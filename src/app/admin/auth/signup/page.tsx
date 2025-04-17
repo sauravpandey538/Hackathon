@@ -5,6 +5,7 @@ import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
 import { useAuth } from "@/src/contexts/auth-context";
+import { useToast } from "@/src/hooks/use-toast";
 import { fetchApi } from "@/src/lib/api";
 import { signupSchema } from "@/src/zod/auth";
 import Link from "next/link";
@@ -68,6 +69,7 @@ const SignupPage = () => {
   const { refreshAuth } = useAuth();
 
   const redirectUrl = "/dashboard";
+  const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
@@ -111,9 +113,19 @@ const SignupPage = () => {
       });
 
       if (response.success) {
+        toast({
+          title: "Registeration Successful 🎉",
+          description: "Redirecting to your dashboard...",
+        });
         await refreshAuth();
         router.push(redirectUrl);
       } else {
+        toast({
+          variant: "destructive",
+          title: "Login Failed ❌",
+          description:
+            response.error || "Invalid credentials. Please try again.",
+        });
         console.log(response.error);
       }
     }

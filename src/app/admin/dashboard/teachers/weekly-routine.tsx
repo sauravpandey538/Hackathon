@@ -105,7 +105,7 @@ export function WeeklyRoutine({ teachers, onAddRoutine }: WeeklyRoutineProps) {
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Semister</label>
+              <label className="block text-sm font-medium mb-1">Semester</label>
               <Select
                 value={semister.toString()}
                 onValueChange={(value) => setSemister(Number(value))}
@@ -182,7 +182,7 @@ export function WeeklyRoutine({ teachers, onAddRoutine }: WeeklyRoutineProps) {
             </div>
             <div>
               <Label htmlFor="time" className="pl-1">
-                Time
+                Start Time
               </Label>
               <Input
                 id="time"

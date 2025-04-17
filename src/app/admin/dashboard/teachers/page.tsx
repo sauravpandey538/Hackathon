@@ -3,7 +3,6 @@
 import { GetRoutine } from "./get-routine";
 import { TeacherForm } from "./teacher-form";
 import { TeacherList } from "./teacher-list";
-import WeeklyRoutineCalendar from "./weekly-calander";
 import { WeeklyRoutine } from "./weekly-routine";
 import {
   Card,
@@ -18,6 +17,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/src/components/ui/tabs";
+import { useToast } from "@/src/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -45,6 +45,7 @@ export default function AdminDashboard() {
   const [routines, setRoutines] = useState<RoutineItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
 
   // Fetch teachers and routines on component mount
   useEffect(() => {
@@ -102,17 +103,18 @@ export default function AdminDashboard() {
       const newTeacher = await response.json();
       setTeachers((prev) => [...prev, newTeacher]);
 
-      // toast({
-      //   title: "Success",
-      //   description: "Teacher added successfully",
-      // });
+      toast({
+        title: "Successful 🎉",
+        description: "Teacher added successfully",
+      });
     } catch (error) {
       console.error("Error adding teacher:", error);
-      // toast({
-      //   title: "Error",
-      //   description: error instanceof Error ? error.message : "Failed to add teacher",
-      //   variant: "destructive",
-      // });
+      toast({
+        title: "Failed ❌",
+        description:
+          error instanceof Error ? error.message : "Failed to add teacher",
+        variant: "destructive",
+      });
     }
   };
 
@@ -132,17 +134,18 @@ export default function AdminDashboard() {
       // Also remove any routines associated with this teacher
       setRoutines((prev) => prev.filter((r) => r.teacher_id !== id));
 
-      // toast({
-      //   title: "Success",
-      //   description: "Teacher removed successfully",
-      // });
+      toast({
+        title: "Success ✅",
+        description: "Teacher removed successfully",
+      });
     } catch (error) {
       console.error("Error removing teacher:", error);
-      // toast({
-      //   title: "Error",
-      //   description: error instanceof Error ? error.message : "Failed to remove teacher",
-      //   variant: "destructive",
-      // });
+      toast({
+        title: "Failed ❌",
+        description:
+          error instanceof Error ? error.message : "Failed to remove teacher",
+        variant: "destructive",
+      });
     }
   };
 
@@ -171,17 +174,18 @@ export default function AdminDashboard() {
       const newRoutine = await response.json();
       setRoutines((prev) => [...prev, newRoutine]);
 
-      // toast({
-      //   title: "Success",
-      //   description: "Routine added successfully",
-      // });
+      toast({
+        title: "Successful 🎉",
+        description: "Routine added successfully",
+      });
     } catch (error) {
       console.error("Error adding routine:", error);
-      // toast({
-      //   title: "Error",
-      //   description: error instanceof Error ? error.message : "Failed to add routine",
-      //   variant: "destructive",
-      // });
+      toast({
+        title: "Failed ❌",
+        description:
+          error instanceof Error ? error.message : "Failed to add routine",
+        variant: "destructive",
+      });
     }
   };
 
@@ -198,17 +202,18 @@ export default function AdminDashboard() {
 
       setRoutines((prev) => prev.filter((r) => r.id !== id));
 
-      // toast({
-      //   title: "Success",
-      //   description: "Routine removed successfully",
-      // });
+      toast({
+        title: "Success ✅",
+        description: "Routine removed successfully",
+      });
     } catch (error) {
       console.error("Error removing routine:", error);
-      // toast({
-      //   title: "Error",
-      //   description: error instanceof Error ? error.message : "Failed to remove routine",
-      //   variant: "destructive",
-      // });
+      toast({
+        title: "Failed ❌",
+        description:
+          error instanceof Error ? error.message : "Failed to remove routine",
+        variant: "destructive",
+      });
     }
   };
 

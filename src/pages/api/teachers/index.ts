@@ -39,6 +39,13 @@ export default async function handler(
         });
       }
 
+      const existingEmail = await db("users").where("email", email).first();
+      if (existingEmail) {
+        return res.status(400).json({
+          error: "Email is already used.",
+        });
+      }
+
       const result = await db.transaction(async (trx: Knex.Transaction) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
