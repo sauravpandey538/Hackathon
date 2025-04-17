@@ -8,17 +8,12 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     const userId = getUserIdFromToken(req.cookies.token) as string;
-
+    console.log(userId);
     const student = await db("students").where("user_id", userId).first();
     const faculty = student?.faculty;
     const semister = student?.semester;
-
     const routine = await db("modules")
-      .select(
-        "modules.*"
-        // "users.name as teacher_name",
-        // "teachers.subject as subject"
-      )
+      .select("modules.*")
       .where("modules.faculty", faculty)
       .where("modules.semester", semister);
     return res.status(200).json(routine);
