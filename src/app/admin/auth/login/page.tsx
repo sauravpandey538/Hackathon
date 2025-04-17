@@ -6,6 +6,7 @@ import { Label } from "@/src/components/ui/label";
 import { useAuth } from "@/src/contexts/auth-context";
 import { useToast } from "@/src/hooks/use-toast";
 import { fetchApi } from "@/src/lib/api";
+import checkExistence from "@/src/lib/checkExistence";
 import { loginSchema } from "@/src/zod/auth";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -76,6 +77,32 @@ const LoginPage = () => {
 
       setError(newErrorState);
     } else {
+      const res = await checkExistence(formData.email);
+      if (!res.success) {
+        toast({
+          variant: "destructive",
+          title: "User not found ❌",
+          description: "Please signup first.",
+        });
+        return;
+      }
+      if (
+        res.success &&
+        typeof res.data === "object" &&
+        res.data !== null &&
+        "role" in res.data
+      ) {
+        const role = (res.data as { role: string }).role;
+        if (role !== "admin") {
+          toast({
+            variant: "destructive",
+            title: "Unauthorized ❌",
+            description: "You are not authorized to access this page.",
+          });
+        }
+        return;
+      }
+
       const response = await fetchApi("/api/auth/login", {
         method: "POST",
         credentials: "include",

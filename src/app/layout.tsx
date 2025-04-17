@@ -8,6 +8,7 @@ import { fontSans, fontMono, fontDisplay, fontCode } from "../lib/fonts";
 import { cn } from "../lib/utils";
 import { Toaster } from "@/src/components/ui/toaster";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -53,7 +54,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <SiteHeader />
           <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
         </AuthProvider>
-        <script src="https://js.pusher.com/8.3.0/pusher.min.js"></script>
+        {/* ✅ Pusher script */}
+        <Script
+          src="https://js.pusher.com/8.3.0/pusher.min.js"
+          strategy="afterInteractive"
+        />
+
+        {/* ✅ Tawk.to script */}
+        <Script id="tawk-to" strategy="afterInteractive">
+          {`
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            (function() {
+              var s1 = document.createElement("script"),
+                  s0 = document.getElementsByTagName("script")[0];
+              s1.async = true;
+              s1.src = 'https://embed.tawk.to/6800b0bd9503a6190d3e4499/1ip1b4puv';
+              s1.charset = 'UTF-8';
+              s1.setAttribute('crossorigin', '*');
+              s0.parentNode.insertBefore(s1, s0);
+            })();
+          `}
+        </Script>
       </body>
     </html>
   );

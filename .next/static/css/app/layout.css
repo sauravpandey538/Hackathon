@@ -1300,6 +1300,9 @@ video {
 .h-\[400px\] {
   height: 400px;
 }
+.h-\[80vh\] {
+  height: 80vh;
+}
 .h-\[var\(--radix-select-trigger-height\)\] {
   height: var(--radix-select-trigger-height);
 }
@@ -1312,9 +1315,6 @@ video {
 }
 .h-px {
   height: 1px;
-}
-.h-\[80vh\] {
-  height: 80vh;
 }
 .max-h-\[--radix-select-content-available-height\] {
   max-height: var(--radix-select-content-available-height);
@@ -1797,6 +1797,9 @@ video {
 .pr-10 {
   padding-right: 2.5rem;
 }
+.pr-4 {
+  padding-right: 1rem;
+}
 .pr-6 {
   padding-right: 1.5rem;
 }
@@ -1805,9 +1808,6 @@ video {
 }
 .pt-0 {
   padding-top: 0px;
-}
-.pr-4 {
-  padding-right: 1rem;
 }
 .text-left {
   text-align: left;

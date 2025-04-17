@@ -7,6 +7,7 @@ import { Label } from "@/src/components/ui/label";
 import { useAuth } from "@/src/contexts/auth-context";
 import { useToast } from "@/src/hooks/use-toast";
 import { fetchApi } from "@/src/lib/api";
+import checkExistence from "@/src/lib/checkExistence";
 import { signupSchema } from "@/src/zod/auth";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -103,6 +104,16 @@ const SignupPage = () => {
 
       setError(newErrorState);
     } else {
+      const res = await checkExistence(formData.email);
+      if (res.success) {
+        toast({
+          variant: "destructive",
+          title: "User already exists ❌",
+          description: "Please login.",
+        });
+        return;
+      }
+
       const response = await fetchApi("/api/auth/register", {
         method: "POST",
         headers: {
