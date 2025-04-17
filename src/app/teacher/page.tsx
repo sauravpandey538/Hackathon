@@ -1,14 +1,16 @@
 "use client";
 
-import { buttonVariants } from "@/src/components/ui/button";
+import { Button, buttonVariants } from "@/src/components/ui/button";
 import { useAuth } from "@/src/contexts/auth-context";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { FaChalkboardTeacher } from "react-icons/fa";
 
 export default function TeacherPage() {
   const { isAuthenticated, role } = useAuth();
   const router = useRouter();
+  const pathname = usePathname() ?? "";
+  const path = pathname.split("/")[1];
   return (
     <main className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl w-full text-center space-y-6">
@@ -23,7 +25,7 @@ export default function TeacherPage() {
           here.
         </p>
         <div className="flex justify-center gap-4">
-          {isAuthenticated && (
+          {isAuthenticated ? (
             <div
               className={buttonVariants()}
               onClick={() => {
@@ -32,6 +34,15 @@ export default function TeacherPage() {
             >
               {`Go To ${role}`}
             </div>
+          ) : (
+            <Button
+              onClick={() => {
+                router.push(`/${path}/auth/login`);
+              }}
+              className={buttonVariants()}
+            >
+              Login to {path}
+            </Button>
           )}
           <Link href="/" className={buttonVariants({ variant: "outline" })}>
             Back to Home
