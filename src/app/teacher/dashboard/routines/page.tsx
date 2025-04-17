@@ -52,8 +52,7 @@ function TeacherRoutinesPage() {
 
   return (
     <div className="container w-full">
-      {JSON.stringify(routines)}
-      {/* <WeeklyRoutineCalendar routines={routines || []} /> */}
+      <WeeklyRoutineCalendar routines={routines || []} />
     </div>
   );
 }

@@ -1,3 +1,7 @@
 {
-  "/student/dashboard/profile/page": "app/student/dashboard/profile/page.js"
+  "/student/auth/login/page": "app/student/auth/login/page.js",
+  "/teacher/auth/login/page": "app/teacher/auth/login/page.js",
+  "/teacher/dashboard/page": "app/teacher/dashboard/page.js",
+  "/teacher/page": "app/teacher/page.js",
+  "/teacher/dashboard/routines/page": "app/teacher/dashboard/routines/page.js"
 }
