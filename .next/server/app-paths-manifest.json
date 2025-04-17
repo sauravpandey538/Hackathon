@@ -1,4 +1,7 @@
 {
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
   "/page": "app/page.js",
-  "/teacher/auth/login/page": "app/teacher/auth/login/page.js"
+  "/teacher/dashboard/modules/page": "app/teacher/dashboard/modules/page.js",
+  "/admin/auth/login/page": "app/admin/auth/login/page.js",
+  "/admin/dashboard/teachers/page": "app/admin/dashboard/teachers/page.js"
 }

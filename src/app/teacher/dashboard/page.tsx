@@ -57,7 +57,7 @@ export default function TeacherNotificationPanel() {
 
   return (
     <div className="p-6 rounded-xl shadow-md w-full">
-      <h2 className="text-xl font-semibold mb-4">Student Notifications</h2>
+      <h2 className="text-xl font-semibold mb-4">Teacher Notifications</h2>
 
       {loading ? (
         <div className="space-y-3">

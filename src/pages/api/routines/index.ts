@@ -11,7 +11,8 @@ export default async function handler(
         .select(
           "teacher_routines.*",
           "teachers.subject",
-          "users.name as teacher_name"
+          "users.name as teacher_name",
+          "user.email"
         )
         .join("teachers", "teacher_routines.teacher_id", "teachers.id")
         .join("users", "teachers.user_id", "users.id")

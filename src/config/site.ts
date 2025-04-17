@@ -21,7 +21,7 @@ export const siteConfig = {
       title: "Dashboard",
       href: "/dashboard",
     },
-    //admin only
+    //Admin
     {
       title: "Teachers",
       href: "/dashboard/teachers",
@@ -30,7 +30,7 @@ export const siteConfig = {
       title: "Students",
       href: "/dashboard/students",
     },
-    //student only
+    // teacher and student
     {
       title: "Modules",
       href: "/dashboard/modules",

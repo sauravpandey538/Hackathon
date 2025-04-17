@@ -68,7 +68,7 @@ export default async function handler(
           .returning("id");
 
         const teacherDetails = await trx("teachers")
-          .select("teachers.*", "users.name")
+          .select("teachers.*", "users.name", "users.email")
           .join("users", "teachers.user_id", "users.id")
           .where("teachers.id", teacher.id)
           .first();
