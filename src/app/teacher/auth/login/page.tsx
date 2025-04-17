@@ -98,8 +98,8 @@ const LoginPage = () => {
             title: "Unauthorized ❌",
             description: "You are not authorized to access this page.",
           });
+          return;
         }
-        return;
       }
 
       const response = await fetchApi("/api/auth/login", {
