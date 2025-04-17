@@ -15,7 +15,10 @@ export default async function handler(
     const routine = await db("modules")
       .select("modules.*")
       .where("modules.faculty", faculty)
-      .where("modules.semester", semister);
+      .where("modules.semester", semister)
+      .leftJoin("teachers", "modules.name", "teachers.subject")
+      .leftJoin("users", "teachers.user_id", "users.id")
+      .select("users.name as teacher_name", "teachers.phone as teacher_phone");
     return res.status(200).json(routine);
   }
 }

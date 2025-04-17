@@ -7,9 +7,11 @@ import React, { useEffect, useState } from "react";
 
 interface Module {
   id: number;
-  imageUrl: string;
   moduleName: string;
-  teacherName: string;
+  teacher_name: string;
+  faculty: string;
+  semester: number;
+  teacher_phone: string;
 }
 
 const StudentDashboard = () => {
@@ -45,9 +47,11 @@ const StudentDashboard = () => {
           : modules.map((mod) => (
               <SingleModule
                 key={mod.id}
-                imageUrl={mod.imageUrl}
+                faculty={mod.faculty}
+                semester={mod.semester}
                 moduleName={mod.moduleName}
-                teacherName={mod.teacherName}
+                teacherName={mod.teacher_name}
+                teacherPhone={mod.teacher_phone}
               />
             ))}
       </div>

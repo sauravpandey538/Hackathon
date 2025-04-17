@@ -26,15 +26,19 @@ const getDayDate = (day: string, time: string): Date => {
   const currentWeekday = today.getDay();
   const targetWeekday = weekDays.indexOf(day);
 
-  const diff = targetWeekday - currentWeekday;
+  let diff = targetWeekday - currentWeekday;
+  if (diff < 0) {
+    diff += 7; // Always move to the NEXT occurrence of the day
+  }
+
   const targetDate = new Date(today);
   targetDate.setDate(today.getDate() + diff);
 
-  // Set time (HH:mm)
   const [hours, minutes] = time.split(":").map(Number);
   targetDate.setHours(hours);
   targetDate.setMinutes(minutes);
   targetDate.setSeconds(0);
+  targetDate.setMilliseconds(0);
 
   return targetDate;
 };

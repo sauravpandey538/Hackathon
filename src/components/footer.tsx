@@ -21,9 +21,12 @@ export default function Footer() {
                   size: "icon",
                   variant: "ghost",
                 })}
+                onClick={() => {
+                  window.open("mailto:sauravpandey0325@gmail.com", "_blank");
+                }}
               >
-                <Icons.gitHub className="w-6 h-6 fill-current" />
-                <span className="sr-only">GitHub</span>
+                <Icons.mail className="w-6 h-6 fill-current" />
+                <span className="sr-only">Email</span>
               </div>
             </Link>
 
@@ -37,9 +40,15 @@ export default function Footer() {
                   size: "icon",
                   variant: "ghost",
                 })}
+                onClick={() => {
+                  window.open(
+                    "https://www.linkedin.com/in/saurav-pandey-b3648530a",
+                    "_blank"
+                  );
+                }}
               >
-                <Icons.twitter className="w-6 h-6 fill-current" />
-                <span className="sr-only">Twitter</span>
+                <Icons.linkedin className="w-6 h-6 fill-current" />
+                <span className="sr-only">Linkedin</span>
               </div>
             </Link>
 
@@ -49,7 +58,7 @@ export default function Footer() {
 
         <div className="text-center text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Code_Sync. All Rights Reserved.
+            &copy; {new Date().getFullYear()} SchoolGrid. All Rights Reserved.
           </p>
         </div>
       </div>

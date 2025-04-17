@@ -45,6 +45,22 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/student/dashboard/page.js"
+    ],
+    "/student/dashboard/modules/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/student/dashboard/modules/page.js"
+    ],
+    "/student/dashboard/routines/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/student/dashboard/routines/page.css",
+      "static/chunks/app/student/dashboard/routines/page.js"
+    ],
+    "/student/dashboard/profile/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/student/dashboard/profile/page.js"
     ]
   }
 }
