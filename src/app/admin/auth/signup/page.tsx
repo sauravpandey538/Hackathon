@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Label } from "@/src/components/ui/label";
-import { Input } from "@/src/components/ui/input";
+import { Icons } from "@/src/components/icons";
 import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
+import { Label } from "@/src/components/ui/label";
+import { useAuth } from "@/src/contexts/auth-context";
+import { fetchApi } from "@/src/lib/api";
 import { signupSchema } from "@/src/zod/auth";
 import Link from "next/link";
-import { fetchApi } from "@/src/lib/api";
-import { useAuth } from "@/src/contexts/auth-context";
-import { Icons } from "@/src/components/icons";
-
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 const fields = [
   {
@@ -68,7 +67,7 @@ const SignupPage = () => {
   const searchParams = useSearchParams();
   const { refreshAuth } = useAuth();
 
-  const redirectUrl = searchParams?.get("redirect") || "/dashboard";
+  const redirectUrl = "/dashboard";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
@@ -102,9 +101,6 @@ const SignupPage = () => {
 
       setError(newErrorState);
     } else {
-
-
-      ;
       const response = await fetchApi("/api/auth/register", {
         method: "POST",
         headers: {
@@ -128,14 +124,18 @@ const SignupPage = () => {
       <Label className="text-2xl font-bold">Admin SignUp</Label>
       <div className="flex flex-col gap-4 max-w-96 w-full">
         {fields.map((field) => (
-          <div className="grid w-full max-w-sm items-center gap-1.5" key={field.id}>
+          <div
+            className="grid w-full max-w-sm items-center gap-1.5"
+            key={field.id}
+          >
             <Label htmlFor={field.name}>{field.label}</Label>
             <div className="relative">
               <Input
                 id={field.name}
                 name={field.name}
                 type={
-                  field.type === "password" && showPassword[field.name as keyof typeof showPassword]
+                  field.type === "password" &&
+                  showPassword[field.name as keyof typeof showPassword]
                     ? "text"
                     : field.type
                 }
@@ -164,7 +164,9 @@ const SignupPage = () => {
               )}
             </div>
             {error[field.name as keyof typeof error] && (
-              <p className="text-red-500">{error[field.name as keyof typeof error]}</p>
+              <p className="text-red-500">
+                {error[field.name as keyof typeof error]}
+              </p>
             )}
           </div>
         ))}
@@ -179,8 +181,9 @@ const SignupPage = () => {
         </Button>
 
         <div className="mt-4 text-center">
-          <Link href={`/admin/auth/login?redirect=${encodeURIComponent(redirectUrl)}`}>
-            Already have an account? <span className="text-gray-300">Login</span>
+          <Link href={`/admin/auth/login`}>
+            Already have an account?{" "}
+            <span className="text-gray-300">Login</span>
           </Link>
         </div>
       </div>

@@ -1,10 +1,14 @@
 "use client";
 
 import { buttonVariants } from "@/src/components/ui/button";
+import { useAuth } from "@/src/contexts/auth-context";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaTools } from "react-icons/fa";
 
 export default function AdminPage() {
+  const { isAuthenticated, role } = useAuth();
+  const router = useRouter();
   return (
     <main className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl w-full text-center space-y-6">
@@ -19,9 +23,16 @@ export default function AdminPage() {
           platform.
         </p>
         <div className="flex justify-center gap-4">
-          <Link href="/admin/dashboard" className={buttonVariants()}>
-            Go to Dashboard
-          </Link>
+          {isAuthenticated && (
+            <div
+              className={buttonVariants()}
+              onClick={() => {
+                router.push(`/${role}/dashboard`);
+              }}
+            >
+              {`Go To ${role}`}
+            </div>
+          )}
           <Link href="/" className={buttonVariants({ variant: "outline" })}>
             Back to Home
           </Link>

@@ -1,10 +1,15 @@
 import pg from "@/src/lib/db";
-import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
+import { serialize } from "cookie";
 import jwt from "jsonwebtoken";
-import { serialize } from "cookie"; // <-- ✅ Import cookie serializer
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+// <-- ✅ Import cookie serializer
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== "POST") {
     return res.status(405).json({ status: false, error: "Method not allowed" });
   }
@@ -17,15 +22,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
-    // if(user.role !== 'admin') {
-    //   return res.status(400).json({ message: "Access denied" });
-    // }
-
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
-      return res.status(400).json({ message: "Invalid password" });
-    }
-
+    console.log({
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+    });
     const token = jwt.sign(
       { id: user.id, email: user.email, name: user.name, role: user.role },
       process.env.JWT_SECRET!,

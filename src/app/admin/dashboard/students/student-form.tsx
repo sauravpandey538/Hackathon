@@ -1,25 +1,50 @@
-import React, { useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { useForm } from 'react-hook-form';
 import { Button } from "@/src/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/src/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/src/components/ui/form";
 import { Input } from "@/src/components/ui/input";
-import { Textarea } from "@/src/components/ui/textarea";
 import { Label } from "@/src/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/src/components/ui/form";
 // import { toast } from "@/src/components/ui/use-toast";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/src/components/ui/select";
+import { Textarea } from "@/src/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const studentSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
   address: z.string().optional(),
   phoneNumber: z.string().optional(),
-  faculty: z.string().min(1, 'Faculty is required'),
-  semester: z.number().min(1, 'Semester is required').max(8, 'Semester must be between 1 and 8'),
-  joinedAt: z.string().min(1, 'Join date is required'),
+  faculty: z.string().min(1, "Faculty is required"),
+  section: z.enum(["A", "B", "C"]),
+  semester: z
+    .number()
+    .min(1, "Semester is required")
+    .max(8, "Semester must be between 1 and 8"),
+  joinedAt: z.string().min(1, "Join date is required"),
   graduateAt: z.string().optional(),
 });
 
@@ -31,9 +56,9 @@ interface StudentFormProps {
 
 // Faculty options
 const FACULTY_OPTIONS = [
-  { value: 'BIT', label: 'Bachelor of Information Technology' },
-  { value: 'BCS', label: 'Bachelor of Computer Science' },
-  { value: 'BBS', label: 'Bachelor of Business Studies' },
+  { value: "BIT", label: "Bachelor of Information Technology" },
+  { value: "BCS", label: "Bachelor of Computer Science" },
+  { value: "BBS", label: "Bachelor of Business Studies" },
 ];
 
 // Semester options
@@ -48,15 +73,16 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
   const form = useForm<StudentFormData>({
     resolver: zodResolver(studentSchema),
     defaultValues: {
-      name: 'student1',
-      email: 'student1@example.com',
-      password: 'itsminee',
-      address: '123 Main St, Anytown, USA',
-      phoneNumber: '1234567890',
-      faculty: 'BIT',
+      name: "student1",
+      email: "student1@example.com",
+      password: "itsminee",
+      address: "123 Main St, Anytown, USA",
+      phoneNumber: "1234567890",
+      faculty: "BIT",
+      section: "A",
       semester: 1,
-      joinedAt: new Date().toISOString().split('T')[0],
-      graduateAt: new Date().toISOString().split('T')[0],
+      joinedAt: new Date().toISOString().split("T")[0],
+      graduateAt: new Date().toISOString().split("T")[0],
     },
   });
 
@@ -84,7 +110,9 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
     <Card>
       <CardHeader>
         <CardTitle>Add New Student</CardTitle>
-        <CardDescription>Fill in the details to add a new student</CardDescription>
+        <CardDescription>
+          Fill in the details to add a new student
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -111,7 +139,11 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="student@example.com" {...field} />
+                      <Input
+                        type="email"
+                        placeholder="student@example.com"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -125,7 +157,11 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="••••••••" {...field} />
+                      <Input
+                        type="password"
+                        placeholder="••••••••"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -152,7 +188,10 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Faculty</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select faculty" />
@@ -177,8 +216,8 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Semester</FormLabel>
-                    <Select 
-                      onValueChange={(value) => field.onChange(parseInt(value))} 
+                    <Select
+                      onValueChange={(value) => field.onChange(parseInt(value))}
                       defaultValue={field.value.toString()}
                     >
                       <FormControl>
@@ -188,10 +227,36 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
                       </FormControl>
                       <SelectContent>
                         {SEMESTER_OPTIONS.map((option) => (
-                          <SelectItem key={option.value} value={option.value.toString()}>
+                          <SelectItem
+                            key={option.value}
+                            value={option.value.toString()}
+                          >
                             {option.label}
                           </SelectItem>
                         ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="section"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Section</FormLabel>
+                    <Select
+                      defaultValue={field.value.toString()}
+                      onValueChange={(value) => field.onChange(value)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Section" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="A">A</SelectItem>
+                        <SelectItem value="B">B</SelectItem>
+                        <SelectItem value="C">C</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -250,4 +315,4 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
       </CardContent>
     </Card>
   );
-} 
+}

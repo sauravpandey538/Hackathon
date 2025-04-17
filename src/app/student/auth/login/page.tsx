@@ -44,7 +44,7 @@ const LoginPage = () => {
   const { refreshAuth } = useAuth();
 
   // Get the redirect URL from the query parameters
-  const redirectUrl = searchParams?.get("redirect") || "/student/dashboard";
+  const redirectUrl = "/student/dashboard";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
@@ -128,9 +128,7 @@ const LoginPage = () => {
         </Button>
       </div>
       <div className="mt-4">
-        <Link href={`/auth/signup?redirect=${encodeURIComponent(redirectUrl)}`}>
-          Don't have an account? <span className="text-gray-300">Signup</span>
-        </Link>
+        <p>Contact SchoolGrid For any assistance</p>
       </div>
     </div>
   );

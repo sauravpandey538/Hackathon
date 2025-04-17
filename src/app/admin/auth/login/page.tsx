@@ -1,14 +1,15 @@
 "use client";
+
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
+import { Label } from "@/src/components/ui/label";
+import { useAuth } from "@/src/contexts/auth-context";
+import { fetchApi } from "@/src/lib/api";
+import { loginSchema } from "@/src/zod/auth";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { z } from "zod";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Label } from "@/src/components/ui/label";
-import { Input } from "@/src/components/ui/input";
-import { Button } from "@/src/components/ui/button";
-import {loginSchema} from "@/src/zod/auth";
-import Link from "next/link";
-import { fetchApi } from "@/src/lib/api";
-import { useAuth } from "@/src/contexts/auth-context";
 
 const fields = [
   {
@@ -37,14 +38,14 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
-  
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const { refreshAuth } = useAuth();
-  
+
   // Get the redirect URL from the query parameters
-  const redirectUrl = searchParams?.get('redirect') || '/admin/dashboard';
-  
+  const redirectUrl = "/admin/dashboard";
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
       email: "",
@@ -77,16 +78,16 @@ const LoginPage = () => {
         method: "POST",
         credentials: "include",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
-      })
+        body: JSON.stringify(formData),
+      });
       if (response.success) {
         // Refresh the authentication state
         await refreshAuth();
         router.push(redirectUrl);
       } else {
-        console.log(response.error)
+        console.log(response.error);
       }
     }
   };
@@ -96,7 +97,10 @@ const LoginPage = () => {
       <Label className="text-2xl font-bold">Admin Login</Label>
       <div className="flex flex-col gap-4 max-w-96 w-full">
         {fields.map((field) => (
-          <div className="grid w-full max-w-sm items-center gap-1.5" key={field.id}>
+          <div
+            className="grid w-full max-w-sm items-center gap-1.5"
+            key={field.id}
+          >
             <Label htmlFor={field.name}>{field.label}</Label>
             <Input
               id={field.name}
@@ -107,7 +111,9 @@ const LoginPage = () => {
               onChange={handleChange}
             />
             {error[field.name as keyof typeof error] && (
-              <p className="text-red-500">{error[field.name as keyof typeof error]}</p>
+              <p className="text-red-500">
+                {error[field.name as keyof typeof error]}
+              </p>
             )}
           </div>
         ))}
@@ -121,7 +127,7 @@ const LoginPage = () => {
         </Button>
       </div>
       <div className="mt-4">
-        <Link href={`/admin/auth/signup?redirect=${encodeURIComponent(redirectUrl)}`}>
+        <Link href={`/admin/auth/signup`}>
           Don't have an account? <span className="text-gray-300">Signup</span>
         </Link>
       </div>
