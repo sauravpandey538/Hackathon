@@ -99,7 +99,7 @@ export function WeeklyRoutine({ teachers, onAddRoutine }: WeeklyRoutineProps) {
                     Bachelor of Business Studies
                   </SelectItem>
                   <SelectItem value="BCA">
-                    Bachelor of Computer Science
+                    Bachelor of Computer Application
                   </SelectItem>
                 </SelectContent>
               </Select>

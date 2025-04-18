@@ -12,6 +12,7 @@ export default async function handler(
     const student = await db("students").where("user_id", userId).first();
     const faculty = student?.faculty;
     const semister = student?.semester;
+    console.log(faculty, semister);
     const routine = await db("modules")
       .select("modules.*")
       .where("modules.faculty", faculty)
