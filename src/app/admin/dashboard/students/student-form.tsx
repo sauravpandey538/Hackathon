@@ -29,6 +29,7 @@ import {
 import { Textarea } from "@/src/components/ui/textarea";
 import { useToast } from "@/src/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -71,31 +72,36 @@ const SEMESTER_OPTIONS = Array.from({ length: 8 }, (_, i) => ({
 export default function StudentForm({ onAdd }: StudentFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
+
+  const defaultValues: StudentFormData = {
+    name: "",
+    email: "",
+    password: "",
+    address: "",
+    phoneNumber: "",
+    faculty: "",
+    section: "A",
+    semester: 1,
+    joinedAt: new Date().toISOString().split("T")[0],
+    graduateAt: new Date().toISOString().split("T")[0],
+  };
+
   const form = useForm<StudentFormData>({
     resolver: zodResolver(studentSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      address: "",
-      phoneNumber: "",
-      faculty: "",
-      section: "A",
-      semester: 1,
-      joinedAt: new Date().toISOString().split("T")[0],
-      graduateAt: new Date().toISOString().split("T")[0],
-    },
+    defaultValues,
   });
 
   const onSubmit = async (data: StudentFormData) => {
     try {
       setIsLoading(true);
       await onAdd(data);
-      form.reset();
+      form.reset(defaultValues);
       toast({
         title: "Success 🎉",
         description: "Student added successfully",
       });
+      router.push("/admin/dashboard/students");
     } catch (err) {
       toast({
         title: "Error",

@@ -60,23 +60,25 @@ export function TeacherForm({ onAdd }: TeacherFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [subList, setSubList] = useState<any[]>([]);
 
+  const defaultValues: TeacherFormData = {
+    name: "",
+    subject: "",
+    email: "",
+    phone: "",
+    password: "",
+    faculty: "BIT",
+  };
+
   const form = useForm<TeacherFormData>({
     resolver: zodResolver(teacherSchema),
-    defaultValues: {
-      name: "",
-      subject: "",
-      email: "",
-      phone: "",
-      password: "",
-      faculty: "BIT",
-    },
+    defaultValues,
   });
 
   const onSubmit = async (data: TeacherFormData) => {
     try {
       setIsLoading(true);
       await onAdd(data);
-      form.reset();
+      form.reset(defaultValues);
     } catch (error) {
       // Optionally handle error/toast
     } finally {
@@ -107,7 +109,6 @@ export function TeacherForm({ onAdd }: TeacherFormProps) {
       <CardHeader>
         <CardTitle>Add New Teacher</CardTitle>
         <CardDescription>
-          {JSON.stringify(form.getValues("subject"))}
           Fill in the details to add a new teacher
         </CardDescription>
       </CardHeader>
