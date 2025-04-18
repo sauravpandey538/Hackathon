@@ -27,6 +27,7 @@ import {
   SelectValue,
 } from "@/src/components/ui/select";
 import { Textarea } from "@/src/components/ui/textarea";
+import { useToast } from "@/src/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -69,16 +70,16 @@ const SEMESTER_OPTIONS = Array.from({ length: 8 }, (_, i) => ({
 
 export default function StudentForm({ onAdd }: StudentFormProps) {
   const [isLoading, setIsLoading] = useState(false);
-
+  const { toast } = useToast();
   const form = useForm<StudentFormData>({
     resolver: zodResolver(studentSchema),
     defaultValues: {
-      name: "student1",
-      email: "student1@example.com",
-      password: "itsminee",
-      address: "123 Main St, Anytown, USA",
-      phoneNumber: "1234567890",
-      faculty: "BIT",
+      name: "",
+      email: "",
+      password: "",
+      address: "",
+      phoneNumber: "",
+      faculty: "",
       section: "A",
       semester: 1,
       joinedAt: new Date().toISOString().split("T")[0],
@@ -91,16 +92,17 @@ export default function StudentForm({ onAdd }: StudentFormProps) {
       setIsLoading(true);
       await onAdd(data);
       form.reset();
-      // toast({
-      //   title: "Success",
-      //   description: "Student added successfully",
-      // });
+      toast({
+        title: "Success 🎉",
+        description: "Student added successfully",
+      });
     } catch (err) {
-      // toast({
-      //   title: "Error",
-      //   description: err instanceof Error ? err.message : 'Failed to add student',
-      //   variant: "destructive",
-      // });
+      toast({
+        title: "Error",
+        description:
+          err instanceof Error ? err.message : "Failed to add student",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }

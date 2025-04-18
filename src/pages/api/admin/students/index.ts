@@ -127,9 +127,9 @@ export default async function handler(
           message: "Student ID is required",
         });
       }
-
+      const student = await pg("students").where("id", id).first();
       // Delete student record first (due to foreign key constraint)
-      await pg("students").where("id", id).del();
+      await pg("users").where("id", student.user_id).del();
 
       return res.status(200).json({
         success: true,

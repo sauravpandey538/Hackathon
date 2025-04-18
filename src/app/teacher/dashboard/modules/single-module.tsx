@@ -10,40 +10,56 @@ import {
   CardTitle,
   CardDescription,
 } from "@/src/components/ui/card";
+import { Phone } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
 interface SingleModuleProps {
-  faculty: string;
   moduleName: string;
+  teacherName: string;
+  faculty: string;
+  semester: number;
+  teacherPhone: string;
 }
 
-function SingleModuleForTeacher({ moduleName, faculty }: SingleModuleProps) {
+function SingleModule({
+  moduleName,
+  teacherName,
+  faculty,
+  semester,
+  teacherPhone,
+}: SingleModuleProps) {
   return (
     <Card className="w-full max-w-md mx-auto mt-6 shadow-lg rounded-2xl">
       <CardHeader className="flex items-center gap-4">
         <Image
-          src={
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9zaFUCD18ltlqn-P8SLTepJbmF9EMYymcrw&s"
-          }
+          src={"/module.png"}
           alt={moduleName}
-          width={300}
-          height={100}
-          className="rounded-full"
+          width={280}
+          height={280}
+          className="rounded-full object-cover border"
         />
 
         <div>
-          <CardTitle className="text-2xl font-semibold">{moduleName}</CardTitle>
-          <CardDescription className="text-sm text-muted-foreground text-center">
-            Associated with{" "}
-            <span className="text-2xl md:text-4xl font-extrabold">
-              {faculty}
-            </span>
+          <CardTitle className="text-xl font-semibold">{moduleName}</CardTitle>
+          <CardDescription className="text-sm text-muted-foreground">
+            Taught by {teacherName || "N/A"}
+            <br />
+            {teacherPhone && (
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4" /> {teacherPhone}
+              </div>
+            )}
           </CardDescription>
         </div>
       </CardHeader>
+
+      <CardContent className="border-t pt-4  text-sm text-muted-foreground flex justify-between items-center">
+        {faculty}
+        <span>Semister {semester}</span>
+      </CardContent>
     </Card>
   );
 }
 
-export default SingleModuleForTeacher;
+export default SingleModule;

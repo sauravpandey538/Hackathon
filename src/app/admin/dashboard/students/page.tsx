@@ -15,6 +15,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/src/components/ui/tabs";
+import { toast } from "@/src/hooks/use-toast";
 import { fetchApi } from "@/src/lib/api";
 // import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
@@ -101,9 +102,12 @@ export default function StudentsPage() {
       // Refresh the student list
       fetchStudents();
     } catch (err) {
-      throw new Error(
-        err instanceof Error ? err.message : "Failed to add student"
-      );
+      toast({
+        title: "Error",
+        description:
+          err instanceof Error ? err.message : "Failed to add student",
+        variant: "destructive",
+      });
     }
   };
 

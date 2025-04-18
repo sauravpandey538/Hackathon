@@ -16,9 +16,11 @@ import React, { useEffect, useState } from "react";
 
 interface Module {
   id: number;
-  imageUrl: string;
   moduleName: string;
   teacherName: string;
+  semester: number;
+  teacherPhone: string;
+  faculty: string;
 }
 
 const faculties = [
@@ -108,7 +110,10 @@ const StudentDashboard = () => {
             <SingleModule
               key={mod.id}
               moduleName={mod.moduleName}
-              faculty={faculty}
+              faculty={mod.faculty}
+              teacherName={mod.teacherName}
+              semester={mod.semester}
+              teacherPhone={mod.teacherPhone}
             />
           ))}
         </div>
