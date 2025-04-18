@@ -1,5 +1,6 @@
 "use client";
 
+import QnaPage from "../components/qna";
 import { buttonVariants } from "../components/ui/button";
 import {
   Card,
@@ -74,19 +75,18 @@ export default function IndexPage() {
       <section className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
         {[
           {
-            title: "Built by Students",
+            title: "Built For Students",
             content:
-              "Created during a Hackathon with real academic needs in mind.",
+              "Created by students for students, with real academic needs in mind.",
           },
           {
             title: "Smart Features",
             content:
-              "Course tracking, notes, real-time updates, academic calendar and more.",
+              "Weekly Routine,  Real-Time Notice, Academic Calendar and more.",
           },
           {
-            title: "Unified Platform",
-            content:
-              "Connect with peers, check assignments, and engage with your department — all in one place.",
+            title: "PreBuild Modules",
+            content: "PreBuild Modules for each semester, each faculty ",
           },
           {
             title: "Tailored for You",
@@ -121,13 +121,12 @@ export default function IndexPage() {
           🎯 <span className="ml-1">Our Mission</span>
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          School Grid started as an ambitious Hackathon project with a single
-          goal: to make education more efficient, accessible, and
-          student-friendly. We believe that the best tools are built by the ones
-          who use them — and that's why we created School Grid for students, by
-          students.
+          School Grid will provide a platform for students to manage their
+          academic life, with a focus on ease of use and functionality. And
+          admin can manage the whole system from the admin dashboard.
         </p>
       </section>
+      <QnaPage />
     </div>
   );
 }
