@@ -171,7 +171,7 @@ export function GetRoutine({
                   <SelectItem value="BBS">
                     Bachelor of Business Studies
                   </SelectItem>
-                  <SelectItem value="BCS">
+                  <SelectItem value="BCA">
                     Bachelor of Computer Science
                   </SelectItem>
                 </SelectContent>

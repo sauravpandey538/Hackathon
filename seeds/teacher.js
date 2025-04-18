@@ -5,7 +5,7 @@ export async function seed(knex) {
 
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const shifts = ["06:30", "08:30"];
-  const faculties = ["BIT", "BCS", "BBS"];
+  const faculties = ["BIT", "BCA", "BBS"];
   const sections = ["A", "B", "C"];
   const semisters = ["1", "2", "2"];
 

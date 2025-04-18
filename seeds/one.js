@@ -21,7 +21,7 @@ exports.seed = async function (knex) {
       },
       {
         name: "Bishal Singh",
-        email: "bishal@bcs.edu",
+        email: "bishal@BCA.edu",
         password: "password123",
         role: "teacher",
       },
@@ -39,7 +39,7 @@ exports.seed = async function (knex) {
       },
       {
         name: "Eva Koirala",
-        email: "eva@bcs.edu",
+        email: "eva@BCA.edu",
         password: "password123",
         role: "teacher",
       },
@@ -65,13 +65,13 @@ exports.seed = async function (knex) {
       },
       {
         name: "Firoj Rai",
-        email: "firoj@bcs.com",
+        email: "firoj@BCA.com",
         password: "password123",
         role: "student",
       },
       {
         name: "Gita Kumari",
-        email: "gita@bcs.com",
+        email: "gita@BCA.com",
         password: "password123",
         role: "student",
       },
@@ -112,9 +112,9 @@ exports.seed = async function (knex) {
       user_id: findUser("alice@bit.edu"),
     },
     {
-      faculty: "BCS",
+      faculty: "BCA",
       subject: "Database Management Systems",
-      user_id: findUser("bishal@bcs.edu"),
+      user_id: findUser("bishal@BCA.edu"),
     },
     {
       faculty: "BBS",
@@ -127,9 +127,9 @@ exports.seed = async function (knex) {
       user_id: findUser("david@bit.edu"),
     },
     {
-      faculty: "BCS",
+      faculty: "BCA",
       subject: "Software Engineering",
-      user_id: findUser("eva@bcs.edu"),
+      user_id: findUser("eva@BCA.edu"),
     },
     {
       faculty: "BBS",
@@ -152,7 +152,7 @@ exports.seed = async function (knex) {
   // Now that we have teachers, let's proceed with inserting routines
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const shifts = ["06:30", "08:30"];
-  const faculties = ["BIT", "BCS", "BBS"];
+  const faculties = ["BIT", "BCA", "BBS"];
   const sections = ["A", "B", "C"];
   const semisters = ["1", "2", "2"];
 
@@ -209,24 +209,24 @@ exports.seed = async function (knex) {
       graduate_at: null,
     },
     {
-      user_id: findUser("firoj@bcs.com"),
+      user_id: findUser("firoj@BCA.com"),
       name: "Firoj Rai",
-      email: "firoj@bcs.com",
+      email: "firoj@BCA.com",
       address: "Lalitpur",
       phone_number: "9800000003",
-      faculty: "BCS",
+      faculty: "BCA",
       semester: 2,
       section: "A",
       joined_at: "2023-08-01",
       graduate_at: null,
     },
     {
-      user_id: findUser("gita@bcs.com"),
+      user_id: findUser("gita@BCA.com"),
       name: "Gita Kumari",
-      email: "gita@bcs.com",
+      email: "gita@BCA.com",
       address: "Bhaktapur",
       phone_number: "9800000004",
-      faculty: "BCS",
+      faculty: "BCA",
       semester: 4,
       section: "B",
       joined_at: "2022-08-01",

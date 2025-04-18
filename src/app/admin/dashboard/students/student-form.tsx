@@ -59,7 +59,7 @@ interface StudentFormProps {
 // Faculty options
 const FACULTY_OPTIONS = [
   { value: "BIT", label: "Bachelor of Information Technology" },
-  { value: "BCS", label: "Bachelor of Computer Science" },
+  { value: "BCA", label: "Bachlore of Computer Application" },
   { value: "BBS", label: "Bachelor of Business Studies" },
 ];
 

@@ -65,7 +65,7 @@ interface StudentListProps {
 // Faculty options
 const FACULTY_OPTIONS = [
   { value: "BIT", label: "Bachelor of Information Technology" },
-  { value: "BCS", label: "Bachelor of Computer Science" },
+  { value: "BCA", label: "Bachelor of Computer Science" },
   { value: "BBS", label: "Bachelor of Business Studies" },
 ];
 
