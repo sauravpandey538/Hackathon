@@ -69,9 +69,8 @@ const SignupPage = () => {
   const searchParams = useSearchParams();
   const { refreshAuth } = useAuth();
 
-  const redirectUrl = "/dashboard";
+  const redirectUrl = "/admin/dashboard";
   const { toast } = useToast();
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
       secret_key: "",
