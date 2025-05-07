@@ -26,9 +26,14 @@ export default async function handler(
       .returning("*");
 
     const token = jwt.sign(
-      { id: newUser.id, email: newUser.email, name: newUser.name },
+      {
+        id: newUser.id,
+        email: newUser.email,
+        name: newUser.name,
+        role: newUser.role,
+      },
       process.env.JWT_SECRET!,
-      { expiresIn: "1h" }
+      { expiresIn: "7d" }
     );
 
     res.setHeader(
@@ -36,7 +41,7 @@ export default async function handler(
       serialize("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: 60 * 60, // 1 hour
+        maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       })

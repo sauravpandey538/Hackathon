@@ -68,8 +68,6 @@ const SignupPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { refreshAuth } = useAuth();
-
-  const redirectUrl = "/admin/dashboard";
   const { toast } = useToast();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError({
@@ -128,7 +126,7 @@ const SignupPage = () => {
           description: "Redirecting to your dashboard...",
         });
         await refreshAuth();
-        router.push(redirectUrl);
+        router.push("/admin/dashboard");
       } else {
         toast({
           variant: "destructive",
